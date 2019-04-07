@@ -1,5 +1,4 @@
-const mix = require('laravel-mix');
-
+const mix = require('laravel-mix')
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -11,5 +10,15 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css');
+mix.js('resources/src/app.js', 'public/js')
+  .js('resources/src/admin/index.js', 'public/js/app-admin.js')
+  .webpackConfig({
+    resolve: {
+      symlinks: false,
+      alias: {
+        '@': path.resolve(__dirname, 'resources/src/'),
+      }
+    }
+  })
+
+mix.copy('resources/src/admin/img', 'public/images')
