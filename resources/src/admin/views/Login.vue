@@ -77,7 +77,7 @@
         e.preventDefault()
         this.$validator.validate().then(valid => {
           if (valid) {
-            this.$http.post('api/login', this.form)
+            this.$http.post('login', this.form)
               .then(res => {
                 console.log(res)
                 if (!res.data.status) {

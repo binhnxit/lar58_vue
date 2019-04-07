@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\LoginRequest;
 use Auth;
+use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
@@ -15,6 +16,10 @@ class AuthController extends Controller
 
     public function getLogin()
     {
+        if (auth()->check()) {
+            return redirect()->route('admin.dashboard.index');
+        }
+
         return view('admin.login');
     }
 
@@ -27,5 +32,18 @@ class AuthController extends Controller
         }
 
         return $this->error('Invalid email or password', 403);
+    }
+
+    public function logout(Request $request)
+    {
+        auth()->logout();
+
+        $request->session()->invalidate();
+
+        if ($request->wantsJson()) {
+            return $this->success(true);
+        }
+
+        return redirect()->route('admin.login');
     }
 }

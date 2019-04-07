@@ -3,6 +3,10 @@ import Vue from 'vue'
 // Lib imports
 import axios from 'axios'
 
-Vue.prototype.$http = axios.create({
+let client = axios.create({
   baseURL: `${window.origin}/admin/`,
+  headers: {'Content-Type': 'application/json'}
 })
+Vue.prototype.$http = client
+
+export default client
