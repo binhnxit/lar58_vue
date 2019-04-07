@@ -26,6 +26,7 @@
   font-size: $font-size-default;
 }
 
+
 @include inputs-color($brand-primary, 'purple');
 @include inputs-color($brand-warning, 'orange');
 @include inputs-color($brand-info, 'info');

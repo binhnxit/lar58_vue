@@ -46,3 +46,6 @@
   @include notifications-color('warning', $brand-warning);
   @include notifications-color('purple', $brand-primary);
 }
+.swal2-toast-shown h2.swal2-title{
+  font-size: 1em !important;
+}

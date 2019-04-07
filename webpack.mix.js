@@ -10,8 +10,8 @@ const mix = require('laravel-mix')
  |
  */
 
-mix.js('resources/src/app.js', 'public/js')
-  .js('resources/src/admin/index.js', 'public/js/app-admin.js')
+mix.js('resources/src/admin/index.js', 'public/js/app-admin.js')
+mix.js('resources/src/admin/main-login.js', 'public/js/app-admin-login.js')
   .webpackConfig({
     resolve: {
       symlinks: false,

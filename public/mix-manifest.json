@@ -1,4 +1,4 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/js/app-admin.js": "/js/app-admin.js"
+    "/js/app-admin.js": "/js/app-admin.js",
+    "/js/app-admin-login.js": "/js/app-admin-login.js"
 }
