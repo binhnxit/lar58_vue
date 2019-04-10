@@ -1,17 +1,9 @@
 <template>
     <v-app>
-        <v-img
-                :src="image"
-                height="100vh"
-        >
-            <v-container fill-height
-                         fluid
-                         grid-list-xl>
-                <v-layout justify-center
-                          wrap>
-
-                    <v-flex xs12
-                            md4>
+        <v-img :src="image" height="100vh">
+            <v-container fill-height fluid grid-list-xl>
+                <v-layout justify-center wrap>
+                    <v-flex xs12 md4>
                         <material-card color="green"
                                        title="Login"
                                        text="Login to Administrator system" class="bg-opacity">
@@ -59,7 +51,7 @@
 </template>
 
 <script>
-  import Alert from '@/admin/plugins/alert'
+  import {error} from 'admin/plugins/alert'
 
   export default {
     data() {
@@ -79,9 +71,8 @@
           if (valid) {
             this.$http.post('login', this.form)
               .then(res => {
-                console.log(res)
                 if (!res.data.status) {
-                  Alert.fire(res.data.error.message, '', 'error')
+                  error(res.data.error.message)
                 } else {
                   window.location = '/admin'
                 }

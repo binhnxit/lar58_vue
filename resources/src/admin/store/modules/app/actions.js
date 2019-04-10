@@ -1,8 +1,8 @@
-import client from '@/admin/plugins/axios'
-import router from '@/admin/router'
+import client from 'admin/plugins/axios'
+import router from 'admin/router'
 
 export default {
-  onLogout({commit}) {
+  onLogout() {
     client.get('logout')
       .then(res => {
         console.log(res)

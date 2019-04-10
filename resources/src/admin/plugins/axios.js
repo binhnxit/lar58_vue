@@ -4,7 +4,7 @@ import Vue from 'vue'
 import axios from 'axios'
 
 let client = axios.create({
-  baseURL: `${window.origin}/admin/`,
+  baseURL: `${window.origin}/admin/api/`,
   headers: {'Content-Type': 'application/json'}
 })
 Vue.prototype.$http = client

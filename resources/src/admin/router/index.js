@@ -8,7 +8,7 @@
 
 // Lib imports
 import Vue from 'vue'
-import Router from 'vue-router'
+import VueRouter from 'vue-router'
 import Meta from 'vue-meta'
 
 // Routes
@@ -19,31 +19,31 @@ function route (path, view, name) {
     name: name || view,
     path,
     component: (resovle) => import(
-      `@/admin/views/${view}.vue`
+      `admin/views/${view}.vue`
       ).then(resovle)
   }
 }
 
-Vue.use(Router)
+Vue.use(VueRouter)
 
 // Create a new router
-const router = new Router({
+const router = new VueRouter({
   mode: 'history',
   routes: paths.map(path => route(path.path, path.view, path.name)).concat([
     { path: '*', redirect: '/dashboard' }
   ]),
   base: '/admin/',
-  scrollBehavior (to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition
-    }
-    if (to.hash) {
-      return { selector: to.hash }
-    }
-    return { x: 0, y: 0 }
-  }
+  // scrollBehavior (to, from, savedPosition) {
+  //   if (savedPosition) {
+  //     return savedPosition
+  //   }
+  //   if (to.hash) {
+  //     return { selector: to.hash }
+  //   }
+  //   return { x: 0, y: 0 }
+  // }
 })
 
 Vue.use(Meta)
-
+export {router}
 export default router

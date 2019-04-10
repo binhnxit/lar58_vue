@@ -12,12 +12,17 @@ export default [
   },
   {
     path: '/users',
-    name: 'Users Page',
+    name: 'Users List',
     view: 'Users'
   },
   {
     path: '/tables',
     name: 'Tables Page',
     view: 'Tables'
+  },
+  {
+    path: '/users/create',
+    name: 'User Create',
+    view: 'UserCreate'
   }
 ]

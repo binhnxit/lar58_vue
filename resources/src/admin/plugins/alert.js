@@ -8,4 +8,16 @@ let options = {
   toast: true,
 }
 
-export default Swal.mixin(options)
+let success = msg => {
+  return Swal.mixin(options).fire(msg, '', 'success')
+}
+
+let error = msg => {
+  return Swal.mixin(options).fire(msg, '', 'error')
+}
+
+let notification = () => {
+  return Swal.mixin(options)
+}
+
+export {success, error, notification}
