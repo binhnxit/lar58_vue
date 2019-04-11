@@ -21,5 +21,20 @@ mix.js('resources/src/admin/main-login.js', 'public/js/app-admin-login.js')
       }
     }
   })
+  .options({
+  postCss: [
+    require('postcss-unprefix'),
+    require('autoprefixer')({
+      browsers: '>0.1%'
+    }),
+    require('cssnano')({
+      preset: ['default', {
+        discardComments: {
+          removeAll: true,
+        },
+      }]
+    }),
+  ]
+})
 
 mix.copy('resources/src/admin/img', 'public/images')

@@ -1,2 +1,3 @@
 import './axios'
-import './vuetify'
+import './icons'
+// @TODO need convert limitless theme core to VueJS syntax

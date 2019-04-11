@@ -30,7 +30,10 @@
     },
     "dependencies": {
         "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+        "autoprefixer": "^9.5.1",
+        "cssnano": "^4.1.10",
         "lodash": "^4.17.11",
+        "postcss-unprefix": "^2.1.4",
         "sweetalert2": "^8.8.1",
         "vee-validate": "^2.2.0",
         "vue-meta": "^1.6.0",

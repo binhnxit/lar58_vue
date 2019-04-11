@@ -3,7 +3,7 @@ import upperFirst from 'lodash/upperFirst'
 import camelCase from 'lodash/camelCase'
 
 const requireComponent = require.context(
-  './', true, /\.vue$/
+  'admin/components/', true, /\.vue$/
 )
 
 requireComponent.keys().forEach(fileName => {
