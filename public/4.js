@@ -79,7 +79,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])('user', {
     items: 'list'
   })),
-  methods: {},
+  methods: {
+    reload: function reload() {
+      $('.demo-loader').block();
+      setTimeout(function () {
+        $('.demo-loader').unblock();
+      }, 3000);
+    }
+  },
+  mounted: function mounted() {},
   created: function created() {
     this.$store.dispatch('user/getListUsers');
   }
@@ -110,6 +118,7 @@ var render = function() {
       _c(
         "b-card",
         {
+          staticClass: "demo-loader",
           scopedSlots: _vm._u([
             {
               key: "title",
@@ -124,7 +133,8 @@ var render = function() {
                 return [
                   _c("a", {
                     staticClass: "list-icons-item",
-                    attrs: { "data-action": "reload" }
+                    attrs: { "data-action": "reload" },
+                    on: { click: _vm.reload }
                   })
                 ]
               },

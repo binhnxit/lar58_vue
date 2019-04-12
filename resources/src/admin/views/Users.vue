@@ -8,12 +8,12 @@
             <span class="text-muted d-block"></span>
         </div>
         <!-- /basic tables title -->
-        <b-card>
+        <b-card class="demo-loader">
             <template #title>
                 Users List
             </template>
             <template #action>
-                <a class="list-icons-item" data-action="reload"></a>
+                <a class="list-icons-item" data-action="reload" @click="reload"></a>
             </template>
             <div class="table-responsive">
                 <table class="table">
@@ -72,6 +72,16 @@
     },
 
     methods: {
+      reload() {
+        $('.demo-loader').block()
+        setTimeout(() => {
+          $('.demo-loader').unblock()
+        }, 3000)
+      }
+    },
+
+    mounted() {
+      
     },
 
     created() {

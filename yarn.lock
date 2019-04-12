@@ -1211,6 +1211,11 @@ block-stream@*:
   dependencies:
     inherits "~2.0.0"
 
+blockui@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/blockui/-/blockui-1.0.0.tgz#528e26354fafb1bd461ad88c4d74d3cf8b2493f6"
+  integrity sha1-Uo4mNU+vsb1GGtiMTXTTz4skk/Y=
+
 bluebird@^3.1.1, bluebird@^3.5.3:
   version "3.5.4"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.4.tgz#d6cc661595de30d5b3af5fcedd3c0b3ef6ec5714"
