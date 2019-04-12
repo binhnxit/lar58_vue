@@ -247,7 +247,7 @@ a.text-default {
         display: inline-block;
         border: $list-feed-circle-border-width solid $list-feed-circle-border-color;
         z-index: 3;
-        //@include size($list-feed-circle-radius);
+        @include size($list-feed-circle-radius);
         @include border-radius($border-radius-circle);
     }
 
@@ -294,7 +294,7 @@ a.text-default {
     .list-feed-item:before {
         content: '';
         border-width: ($list-feed-circle-radius / 2);
-        //@include size(0);
+        @include size(0);
     }
 }
 

@@ -167,19 +167,17 @@ a.breadcrumb-item {
 }
 
 // Links
-a.breadcrumb-elements-item {
+a.breadcrumb-elements-item, a.breadcrumb-item {
     // Linked items
-    a.breadcrumb-item {
-        display: inline-block;
-        color: inherit;
-        @include transition(opacity ease-in-out $component-transition-timer);
+    display: inline-block;
+    color: inherit;
+    @include transition(opacity ease-in-out $component-transition-timer);
 
-        // Hover state
-        &:hover,
-        &:focus,
-        .show > & {
-            opacity: 0.75;
-        }
+    // Hover state
+    &:hover,
+    &:focus,
+    .show > & {
+        opacity: 0.75;
     }
 }
 

@@ -131,7 +131,7 @@ a.badge {
 .badge-mark {
     padding: 0;
     border: $badge-mark-border-width solid;
-    //@include size($badge-mark-size);
+    @include size($badge-mark-size);
     @include border-radius($border-radius-round);
 
     // Override default behaviour if it's empty
