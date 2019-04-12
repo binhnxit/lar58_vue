@@ -11,10 +11,11 @@ const mix = require('laravel-mix')
  */
 
 mix.js('resources/src/admin/index.js', 'public/js/app-admin.js')
+mix.js('resources/src/admin/pace.min.js', 'public/js')
 mix.js('resources/src/admin/main-login.js', 'public/js/app-admin-login.js')
   .webpackConfig({
     resolve: {
-      extensions: ['.js', '.json', '.vue', '.css', '.scss'],
+      //extensions: ['.js', '.json', '.vue', '.css', '.scss'],
       alias: {
         '@': path.resolve(__dirname, 'resources/src/'),
         admin: path.resolve(__dirname, 'resources/src/admin/'),

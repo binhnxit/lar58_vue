@@ -46,4 +46,11 @@ class AuthController extends Controller
 
         return redirect()->route('admin.login');
     }
+
+    public function me(Request $request)
+    {
+        $user = $request->user();
+
+        return $this->success($user);
+    }
 }

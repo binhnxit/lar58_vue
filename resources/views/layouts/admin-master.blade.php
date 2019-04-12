@@ -11,8 +11,9 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     @yield('assets-head')
 </head>
-<body>
+<body class="navbar-top">
 @yield('main-content')
 @yield('scripts')
+<script src="{{asset(mix('js/pace.min.js'))}}"></script>
 </body>
 </html>

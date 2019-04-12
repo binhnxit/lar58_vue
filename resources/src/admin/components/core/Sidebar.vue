@@ -1,5 +1,5 @@
 <template>
-    <div class="sidebar sidebar-light sidebar-main sidebar-expand-md">
+    <div class="sidebar sidebar-light sidebar-main sidebar-expand-md sidebar-fixed">
 
         <!-- Sidebar mobile toggler -->
         <div class="sidebar-mobile-toggler text-center">
@@ -26,8 +26,8 @@
                             <img src="admin/img/themes/placeholders/placeholder.jpg"
                                  class="img-fluid rounded-circle shadow-1 mb-3" width="80" height="80" alt="">
                         </a>
-                        <h6 class="mb-0 text-white text-shadow-dark">Victoria Baker</h6>
-                        <span class="font-size-sm text-white text-shadow-dark">Santa Ana, CA</span>
+                        <h6 class="mb-0 text-white text-shadow-dark">{{authInfo.name}}</h6>
+                        <!--<span class="font-size-sm text-white text-shadow-dark">Santa Ana, CA</span>-->
                     </div>
 
                     <div class="sidebar-user-material-footer">
@@ -40,23 +40,23 @@
                 <div class="collapse" id="user-nav">
                     <ul class="nav nav-sidebar">
                         <!--<li class="nav-item">-->
-                            <!--<a href="#" class="nav-link">-->
-                                <!--<i class="icon-user-plus"></i>-->
-                                <!--<span>My profile</span>-->
-                            <!--</a>-->
+                        <!--<a href="#" class="nav-link">-->
+                        <!--<i class="icon-user-plus"></i>-->
+                        <!--<span>My profile</span>-->
+                        <!--</a>-->
                         <!--</li>-->
                         <!--<li class="nav-item">-->
-                            <!--<a href="#" class="nav-link">-->
-                                <!--<i class="icon-coins"></i>-->
-                                <!--<span>My balance</span>-->
-                            <!--</a>-->
+                        <!--<a href="#" class="nav-link">-->
+                        <!--<i class="icon-coins"></i>-->
+                        <!--<span>My balance</span>-->
+                        <!--</a>-->
                         <!--</li>-->
                         <!--<li class="nav-item">-->
-                            <!--<a href="#" class="nav-link">-->
-                                <!--<i class="icon-comment-discussion"></i>-->
-                                <!--<span>Messages</span>-->
-                                <!--<span class="badge bg-teal-400 badge-pill align-self-center ml-auto">58</span>-->
-                            <!--</a>-->
+                        <!--<a href="#" class="nav-link">-->
+                        <!--<i class="icon-comment-discussion"></i>-->
+                        <!--<span>Messages</span>-->
+                        <!--<span class="badge bg-teal-400 badge-pill align-self-center ml-auto">58</span>-->
+                        <!--</a>-->
                         <!--</li>-->
                         <li class="nav-item">
                             <a href="#" class="nav-link">
@@ -65,7 +65,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="javascript:void(0)" class="nav-link" @click="onLogout">
                                 <i class="icon-switch2"></i>
                                 <span>Logout</span>
                             </a>
@@ -100,13 +100,13 @@
                     </li>
 
                     <!--<li class="nav-item nav-item-submenu">-->
-                        <!--<a href="#" class="nav-link"><i class="icon-users"></i> <span>Users</span></a>-->
+                    <!--<a href="#" class="nav-link"><i class="icon-users"></i> <span>Users</span></a>-->
 
-                        <!--<ul class="nav nav-group-sub" data-submenu-title="Users">-->
-                            <!--<li class="nav-item">-->
-                                <!--<a href="" class="nav-link active">List Users</a>-->
-                            <!--</li>-->
-                        <!--</ul>-->
+                    <!--<ul class="nav nav-group-sub" data-submenu-title="Users">-->
+                    <!--<li class="nav-item">-->
+                    <!--<a href="" class="nav-link active">List Users</a>-->
+                    <!--</li>-->
+                    <!--</ul>-->
                     <!--</li>-->
 
 
@@ -121,8 +121,18 @@
 </template>
 
 <script>
+  import {mapActions, mapState} from 'vuex'
+
   export default {
-    name: "core-sidebar"
+    name: "core-sidebar",
+
+    methods: {
+      ...mapActions('app', ['onLogout'])
+    },
+
+    computed: {
+      ...mapState('app', ['authInfo'])
+    },
   }
 </script>
 

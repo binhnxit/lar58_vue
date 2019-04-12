@@ -5,10 +5,19 @@ export default {
   onLogout() {
     client.get('logout')
       .then(res => {
-        console.log(res)
-        router.push('/admin')
-        window.location.reload()
+        if (res.data.status) {
+          router.push('/admin')
+          window.location.reload()
+        }
       })
+  },
 
+  getAuthInfo({commit}) {
+    client.get('me')
+      .then(res => {
+        if (res.data.status) {
+          commit('SET_AUTH_INFO', res.data.data)
+        }
+      })
   }
 }

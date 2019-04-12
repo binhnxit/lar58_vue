@@ -51,6 +51,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -97,103 +103,93 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "v-container",
-    { attrs: { "fill-height": "", fluid: "", "grid-list-xl": "" } },
+    "div",
     [
+      _vm._m(0),
+      _vm._v(" "),
       _c(
-        "v-layout",
-        { attrs: { wrap: "" } },
-        [
-          _c(
-            "v-flex",
-            { attrs: { md12: "" } },
-            [
-              _c(
-                "router-link",
-                { attrs: { to: { path: "/users/create" } } },
-                [
-                  _c(
-                    "v-btn",
-                    { attrs: { fab: "", dark: "", color: "indigo" } },
-                    [
-                      _c("v-icon", { attrs: { dark: "" } }, [
-                        _vm._v("fa-plus-circle")
-                      ])
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-flex",
-            { attrs: { md12: "" } },
-            [
-              _c(
-                "material-card",
-                {
-                  attrs: {
-                    color: "green",
-                    flat: "",
-                    "full-width": "",
-                    title: "Users list",
-                    text: "Users for ...."
-                  }
-                },
-                [
-                  _c("v-data-table", {
-                    attrs: {
-                      headers: _vm.headers,
-                      items: _vm.items,
-                      "hide-actions": ""
-                    },
-                    scopedSlots: _vm._u([
-                      {
-                        key: "headerCell",
-                        fn: function(ref) {
-                          var header = ref.header
-                          return [
-                            _c("span", {
-                              staticClass:
-                                "subheading font-weight-light text--darken-3",
-                              domProps: { textContent: _vm._s(header.text) }
-                            })
-                          ]
-                        }
-                      },
-                      {
-                        key: "items",
-                        fn: function(ref) {
-                          var item = ref.item
-                          return [
-                            _c("td", [_vm._v(_vm._s(item.name))]),
-                            _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(item.email))]),
-                            _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(item.created_at))])
-                          ]
-                        }
-                      }
-                    ])
+        "b-card",
+        {
+          scopedSlots: _vm._u([
+            {
+              key: "title",
+              fn: function() {
+                return [_vm._v("\n            Users List\n        ")]
+              },
+              proxy: true
+            },
+            {
+              key: "action",
+              fn: function() {
+                return [
+                  _c("a", {
+                    staticClass: "list-icons-item",
+                    attrs: { "data-action": "reload" }
                   })
-                ],
-                1
+                ]
+              },
+              proxy: true
+            }
+          ])
+        },
+        [
+          _vm._v(" "),
+          _vm._v(" "),
+          _c("div", { staticClass: "table-responsive" }, [
+            _c("table", { staticClass: "table" }, [
+              _c("thead", [
+                _c("tr", [
+                  _c("th", [_vm._v("#")]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("Name")]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("Email")]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("Created At")]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("Action")])
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.items, function(user) {
+                  return _c("tr", [
+                    _c("td", [_vm._v(_vm._s(user.id))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(user.name))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(user.email))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(user.created_at))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v("Action")])
+                  ])
+                }),
+                0
               )
-            ],
-            1
-          )
-        ],
-        1
+            ])
+          ])
+        ]
       )
     ],
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "mb-3" }, [
+      _c("h6", { staticClass: "mb-0 font-weight-semibold" }, [
+        _vm._v("\n            Users list\n        ")
+      ]),
+      _vm._v(" "),
+      _c("span", { staticClass: "text-muted d-block" })
+    ])
+  }
+]
 render._withStripped = true
 
 

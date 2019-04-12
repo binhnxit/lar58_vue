@@ -1,38 +1,44 @@
 <template>
-    <v-container
-            fill-height
-            fluid
-            grid-list-xl>
-        <v-layout wrap>
-            <v-flex md12>
-                <router-link :to="{path: '/users/create'}">
-                    <v-btn fab dark color="indigo">
-                        <v-icon dark>fa-plus-circle</v-icon>
-                    </v-btn>
-                </router-link>
-            </v-flex>
-            <v-flex md12>
-                <material-card color="green"
-                               flat
-                               full-width
-                               title="Users list"
-                               text="Users for ....">
-                    <v-data-table :headers="headers"
-                                  :items="items"
-                                  hide-actions>
-                        <template slot="headerCell" slot-scope="{ header }">
-                            <span class="subheading font-weight-light text--darken-3" v-text="header.text"/>
-                        </template>
-                        <template slot="items" slot-scope="{ item }">
-                            <td>{{ item.name }}</td>
-                            <td>{{ item.email }}</td>
-                            <td>{{ item.created_at }}</td>
-                        </template>
-                    </v-data-table>
-                </material-card>
-            </v-flex>
-        </v-layout>
-    </v-container>
+    <div>
+        <!-- Basic tables title -->
+        <div class="mb-3">
+            <h6 class="mb-0 font-weight-semibold">
+                Users list
+            </h6>
+            <span class="text-muted d-block"></span>
+        </div>
+        <!-- /basic tables title -->
+        <b-card>
+            <template #title>
+                Users List
+            </template>
+            <template #action>
+                <a class="list-icons-item" data-action="reload"></a>
+            </template>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Created At</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="user in items">
+                        <td>{{user.id}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.created_at}}</td>
+                        <td>Action</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </b-card>
+    </div>
 </template>
 
 <script>
@@ -60,11 +66,14 @@
         ],
       }
     },
+
     computed: {
       ...mapState('user', {items: 'list'})
     },
+
     methods: {
     },
+
     created() {
       this.$store.dispatch('user/getListUsers')
     },

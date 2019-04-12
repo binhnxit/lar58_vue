@@ -158,7 +158,7 @@
 
 		// Overlay
 		body:not(.swal2-no-backdrop) &.swal2-shown {
-			background-color: rgba($modal-backdrop-bg, $modal-backdrop-opacity);
+			//background-color: rgba($modal-backdrop-bg, $modal-backdrop-opacity);
 		}
 	}
 

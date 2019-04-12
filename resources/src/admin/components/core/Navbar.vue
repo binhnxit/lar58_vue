@@ -1,5 +1,5 @@
 <template>
-    <div class="navbar navbar-expand-md navbar-dark bg-indigo navbar-static">
+    <div class="navbar navbar-expand-md navbar-dark bg-indigo navbar-static fixed-top">
         <div class="navbar-brand">
             <a href="index.html" class="d-inline-block">
                 <img src="/images/themes/logo_light.png" alt="">
@@ -26,7 +26,7 @@
 
             <span class="navbar-text ml-md-3">
                 <span class="badge badge-mark border-orange-300 mr-2"></span>
-                Morning, Victoria!
+                Hello, {{authInfo.name}}
             </span>
 
             <ul class="navbar-nav ml-md-auto">
@@ -186,7 +186,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="#" class="navbar-nav-link">
+                    <a href="javascript:void(0)" @click="onLogout" class="navbar-nav-link">
                         <i class="icon-switch2"></i>
                         <span class="d-md-none ml-2">Logout</span>
                     </a>
@@ -197,8 +197,21 @@
 </template>
 
 <script>
+  import {mapActions, mapState} from 'vuex'
+
   export default {
-    name: "core-navbar"
+    name: "core-navbar",
+
+    computed: {
+      ...mapState('app', ['authInfo'])
+    },
+    methods: {
+      ...mapActions('app', ['onLogout'])
+    },
+
+    created() {
+      this.$store.dispatch('app/getAuthInfo')
+    }
   }
 </script>
 
