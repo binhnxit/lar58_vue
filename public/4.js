@@ -58,6 +58,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -113,7 +116,30 @@ var render = function() {
   return _c(
     "div",
     [
-      _vm._m(0),
+      _c("div", { staticClass: "mb-3" }, [
+        _c(
+          "h6",
+          { staticClass: "mb-0 font-weight-semibold" },
+          [
+            _c("router-link", { attrs: { to: "/users/create" } }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn bg-blue legitRipple",
+                  attrs: { type: "button" }
+                },
+                [
+                  _vm._v("Create "),
+                  _c("i", { staticClass: "icon-paperplane ml-2" })
+                ]
+              )
+            ])
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("span", { staticClass: "text-muted d-block" })
+      ]),
       _vm._v(" "),
       _c(
         "b-card",
@@ -186,20 +212,7 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mb-3" }, [
-      _c("h6", { staticClass: "mb-0 font-weight-semibold" }, [
-        _vm._v("\n            Users list\n        ")
-      ]),
-      _vm._v(" "),
-      _c("span", { staticClass: "text-muted d-block" })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

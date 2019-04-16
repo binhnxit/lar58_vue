@@ -69,20 +69,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   metaInfo: function metaInfo() {
@@ -95,6 +81,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])('user', {
     user: 'user'
+  }), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])('app', {
+    isLoading: 'isLoading'
   })),
   methods: {
     onSubmit: function onSubmit(e) {
@@ -128,226 +116,260 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "v-container",
-    { attrs: { "fill-height": "", fluid: "", "grid-list-xl": "" } },
+    "div",
+    { staticClass: "col-md-6" },
     [
       _c(
-        "v-layout",
-        { attrs: { wrap: "", "justify-center": "" } },
+        "b-card",
+        {
+          staticClass: "pb-3",
+          scopedSlots: _vm._u([
+            {
+              key: "title",
+              fn: function() {
+                return [_vm._v("\n            Create new user\n        ")]
+              },
+              proxy: true
+            }
+          ])
+        },
         [
-          _c(
-            "v-flex",
-            { attrs: { xs12: "", md8: "" } },
-            [
-              _c(
-                "material-card",
-                {
-                  staticClass: "bg-opacity",
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-12" }, [
+            _c("form", { on: { submit: _vm.onSubmit } }, [
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", [_vm._v("Name:")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: "required",
+                      expression: "'required'"
+                    },
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user.name,
+                      expression: "user.name"
+                    }
+                  ],
+                  staticClass: "form-control",
                   attrs: {
-                    color: "green",
-                    title: "Create User",
-                    text: "Please fill your information and press save button"
+                    type: "text",
+                    name: "name",
+                    "error-messages": _vm.errors.collect("name"),
+                    placeholder: "Your name"
+                  },
+                  domProps: { value: _vm.user.name },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.user, "name", $event.target.value)
+                    }
                   }
-                },
+                }),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("name"),
+                        expression: "errors.has('name')"
+                      }
+                    ],
+                    staticClass: "text-danger"
+                  },
+                  [_vm._v(_vm._s(_vm.errors.first("name")))]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", [_vm._v("Email:")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: "required|email",
+                      expression: "'required|email'"
+                    },
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user.email,
+                      expression: "user.email"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "email",
+                    name: "email",
+                    placeholder: "Your email"
+                  },
+                  domProps: { value: _vm.user.email },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.user, "email", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("email"),
+                        expression: "errors.has('email')"
+                      }
+                    ],
+                    staticClass: "text-danger"
+                  },
+                  [_vm._v(_vm._s(_vm.errors.first("email")))]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", [_vm._v("Password:")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: "required",
+                      expression: "'required'"
+                    },
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user.password,
+                      expression: "user.password"
+                    }
+                  ],
+                  ref: "password",
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "password",
+                    name: "password",
+                    placeholder: "Your password"
+                  },
+                  domProps: { value: _vm.user.password },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.user, "password", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("password"),
+                        expression: "errors.has('password')"
+                      }
+                    ],
+                    staticClass: "text-danger"
+                  },
+                  [_vm._v(_vm._s(_vm.errors.first("password")))]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", [_vm._v("Password Confirmation:")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: "required|confirmed:password",
+                      expression: "'required|confirmed:password'"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "password",
+                    name: "password_confirmation",
+                    placeholder: "Your confirmation password"
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("password_confirmation"),
+                        expression: "errors.has('password_confirmation')"
+                      }
+                    ],
+                    staticClass: "text-danger"
+                  },
+                  [_vm._v(_vm._s(_vm.errors.first("password_confirmation")))]
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "justify-content-between align-items-center" },
                 [
                   _c(
-                    "v-form",
+                    "span",
                     {
-                      attrs: { autocomplete: "off" },
-                      on: { submit: _vm.onSubmit }
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.isLoading,
+                          expression: "isLoading"
+                        }
+                      ]
                     },
                     [
-                      _c(
-                        "v-container",
-                        { attrs: { "py-0": "" } },
-                        [
-                          _c(
-                            "v-layout",
-                            { attrs: { wrap: "" } },
-                            [
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "", md12: "" } },
-                                [
-                                  _c("v-text-field", {
-                                    directives: [
-                                      {
-                                        name: "validate",
-                                        rawName: "v-validate",
-                                        value: "required",
-                                        expression: "'required'"
-                                      }
-                                    ],
-                                    staticClass: "success-input",
-                                    attrs: {
-                                      label: "Name",
-                                      "error-messages": _vm.errors.collect(
-                                        "name"
-                                      ),
-                                      name: "name",
-                                      autocomplete: "false"
-                                    },
-                                    model: {
-                                      value: _vm.user.name,
-                                      callback: function($$v) {
-                                        _vm.$set(_vm.user, "name", $$v)
-                                      },
-                                      expression: "user.name"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "", md12: "" } },
-                                [
-                                  _c("v-text-field", {
-                                    directives: [
-                                      {
-                                        name: "validate",
-                                        rawName: "v-validate",
-                                        value: "required|email",
-                                        expression: "'required|email'"
-                                      }
-                                    ],
-                                    staticClass: "success-input",
-                                    attrs: {
-                                      label: "Email",
-                                      "error-messages": _vm.errors.collect(
-                                        "email"
-                                      ),
-                                      name: "email",
-                                      autocomplete: "off"
-                                    },
-                                    model: {
-                                      value: _vm.user.email,
-                                      callback: function($$v) {
-                                        _vm.$set(_vm.user, "email", $$v)
-                                      },
-                                      expression: "user.email"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "", md12: "" } },
-                                [
-                                  _c("v-text-field", {
-                                    directives: [
-                                      {
-                                        name: "validate",
-                                        rawName: "v-validate",
-                                        value: "required",
-                                        expression: "'required'"
-                                      }
-                                    ],
-                                    ref: "password",
-                                    staticClass: "success-input",
-                                    attrs: {
-                                      label: "Password",
-                                      "data-vv-as": "password",
-                                      "error-messages": _vm.errors.collect(
-                                        "password"
-                                      ),
-                                      name: "password",
-                                      type: "password"
-                                    },
-                                    model: {
-                                      value: _vm.user.password,
-                                      callback: function($$v) {
-                                        _vm.$set(_vm.user, "password", $$v)
-                                      },
-                                      expression: "user.password"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "", md12: "" } },
-                                [
-                                  _c("v-text-field", {
-                                    directives: [
-                                      {
-                                        name: "validate",
-                                        rawName: "v-validate",
-                                        value: "required|confirmed:password",
-                                        expression:
-                                          "'required|confirmed:password'"
-                                      }
-                                    ],
-                                    staticClass: "success-input",
-                                    attrs: {
-                                      label: "Password Confirmation",
-                                      "data-vv-as": "password_confirmation",
-                                      name: "password_confirmation",
-                                      "error-messages": _vm.errors.collect(
-                                        "password_confirmation"
-                                      ),
-                                      type: "password"
-                                    },
-                                    model: {
-                                      value: _vm.user.password_confirmation,
-                                      callback: function($$v) {
-                                        _vm.$set(
-                                          _vm.user,
-                                          "password_confirmation",
-                                          $$v
-                                        )
-                                      },
-                                      expression: "user.password_confirmation"
-                                    }
-                                  })
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-flex",
-                                { attrs: { xs12: "", "text-xs-right": "" } },
-                                [
-                                  _c(
-                                    "v-btn",
-                                    {
-                                      staticClass: "mx-0 font-weight-light",
-                                      attrs: {
-                                        type: "submit",
-                                        color: "success"
-                                      }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                                    Save\n                                "
-                                      )
-                                    ]
-                                  )
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
+                      _c("i", { staticClass: "icon-spinner2 spinner mr-2" }),
+                      _vm._v(" Processing...")
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn bg-blue float-right",
+                      attrs: { type: "submit" }
+                    },
+                    [
+                      _vm._v("Submit "),
+                      _c("i", { staticClass: "icon-paperplane ml-2" })
+                    ]
                   )
-                ],
-                1
+                ]
               )
-            ],
-            1
-          )
-        ],
-        1
+            ])
+          ])
+        ]
       )
     ],
     1

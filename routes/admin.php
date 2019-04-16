@@ -13,8 +13,12 @@ Route::middleware('auth.admin')->group(function () {
     Route::prefix('api')->group(function () {
         Route::get('me', 'AuthController@me')->name('api.admin.me');
         Route::get('logout', 'AuthController@logout')->name('api.admin.logout');
-        Route::get('users', 'UserController@listAll')->name('api.admin.users.list');
-        Route::post('users', 'UserController@create')->name('api.admin.users.add');
+
+        Route::prefix('users')->name('api.admin.users.')->group(function () {
+            Route::get('/', 'UserController@listAll')->name('list');
+            Route::post('/', 'UserController@create')->name('add');
+            Route::get('check-email', 'UserController@checkEmail')->name('check-mail');
+        });
     });
 
     // Catch all route...

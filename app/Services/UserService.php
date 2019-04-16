@@ -27,4 +27,11 @@ class UserService
     {
         return User::query()->orderBy('id', 'DESC')->get();
     }
+
+    public function checkEmail($email)
+    {
+        $user = User::query()->where('email', $email)->first();
+
+        return !empty($user);
+    }
 }

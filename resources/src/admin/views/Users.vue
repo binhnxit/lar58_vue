@@ -3,9 +3,12 @@
         <!-- Basic tables title -->
         <div class="mb-3">
             <h6 class="mb-0 font-weight-semibold">
-                Users list
+                <router-link to="/users/create">
+                    <button type="button" class="btn bg-blue legitRipple">Create <i class="icon-paperplane ml-2"></i></button>
+                </router-link>
             </h6>
             <span class="text-muted d-block">
+
             </span>
         </div>
         <!-- /basic tables title -->

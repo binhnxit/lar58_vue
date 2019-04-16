@@ -24,9 +24,4 @@ export default {
         }
       })
   },
-
-  demoStoreUser({commit}) {
-    router.push({path: '/tables'})
-    console.log(router)
-  }
 }
