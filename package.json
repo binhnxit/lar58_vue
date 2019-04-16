@@ -34,6 +34,7 @@
         "blockui": "^1.0.0",
         "cssnano": "^4.1.10",
         "lodash": "^4.17.11",
+        "nprogress": "^0.2.0",
         "postcss-unprefix": "^2.1.4",
         "sweetalert2": "^8.8.1",
         "vee-validate": "^2.2.0",

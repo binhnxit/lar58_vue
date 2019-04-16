@@ -5,7 +5,8 @@
             <h6 class="mb-0 font-weight-semibold">
                 Users list
             </h6>
-            <span class="text-muted d-block"></span>
+            <span class="text-muted d-block">
+            </span>
         </div>
         <!-- /basic tables title -->
         <b-card class="demo-loader">
@@ -68,20 +69,18 @@
     },
 
     computed: {
-      ...mapState('user', {items: 'list'})
+      ...mapState('user', {items: 'list'}),
+      ...mapState('app', {isLoading: 'isLoading'}),
     },
 
     methods: {
       reload() {
-        $('.demo-loader').block()
-        setTimeout(() => {
-          $('.demo-loader').unblock()
-        }, 3000)
+        this.$store.dispatch('user/getListUsers')
       }
     },
 
     mounted() {
-      
+
     },
 
     created() {

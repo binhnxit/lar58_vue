@@ -57,6 +57,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -78,13 +79,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])('user', {
     items: 'list'
+  }), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])('app', {
+    isLoading: 'isLoading'
   })),
   methods: {
     reload: function reload() {
-      $('.demo-loader').block();
-      setTimeout(function () {
-        $('.demo-loader').unblock();
-      }, 3000);
+      this.$store.dispatch('user/getListUsers');
     }
   },
   mounted: function mounted() {},

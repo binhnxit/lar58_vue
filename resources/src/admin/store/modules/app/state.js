@@ -5,5 +5,6 @@ export default {
   authInfo: {
     name: null,
     email: null,
-  }
+  },
+  isLoading: false,
 }

@@ -14,7 +14,7 @@ import Meta from 'vue-meta'
 // Routes
 import paths from './paths'
 
-function route (path, view, name) {
+function route(path, view, name) {
   return {
     name: name || view,
     path,
@@ -30,20 +30,25 @@ Vue.use(VueRouter)
 const router = new VueRouter({
   mode: 'history',
   routes: paths.map(path => route(path.path, path.view, path.name)).concat([
-    { path: '*', redirect: '/dashboard' }
+    {path: '*', redirect: '/dashboard'}
   ]),
   base: '/admin/',
-  // scrollBehavior (to, from, savedPosition) {
-  //   if (savedPosition) {
-  //     return savedPosition
-  //   }
-  //   if (to.hash) {
-  //     return { selector: to.hash }
-  //   }
-  //   return { x: 0, y: 0 }
-  // }
+})
+
+router.beforeResolve((to, from, next) => {
+  // If this isn't an initial page load.
+  if (to.name) {
+    // Start the route progress bar.
+    NProgress.start()
+  }
+  next()
+})
+
+router.afterEach((to, from) => {
+  // Complete the animation of the route progress bar.
+  NProgress.done()
 })
 
 Vue.use(Meta)
-export {router}
+
 export default router

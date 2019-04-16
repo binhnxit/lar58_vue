@@ -19,5 +19,9 @@ export default {
           commit('SET_AUTH_INFO', res.data.data)
         }
       })
+  },
+
+  setLoading({commit}, status) {
+    commit('SET_LOADING', status)
   }
 }
