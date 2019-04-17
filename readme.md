@@ -8,6 +8,7 @@
 `php artisan migrate` <br />
 `php artisan config:cache` <br />
 `php artisan cache:clear` <br />
+`php artisan db:seed --class=AdminAccountSeeder` default admin account: `admin@lar58vue.com`/`password` <br />
 
 
 ## Frontend VueJS
