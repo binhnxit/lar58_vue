@@ -34,3 +34,6 @@
     |-- styles -> scss, css, styles for app
     |-- views -> Components View for app (eg: Dashboard page, Users page, ....)
 ```
+
+## Limitless theme static 
+[Refer](/limitless_theme_static)
