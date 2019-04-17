@@ -36,4 +36,4 @@
 ```
 
 ## Limitless theme static 
-[Refer](/limitless_theme_static)
+[Refer](https://github.com/binhnxit/limitless_theme_static)
