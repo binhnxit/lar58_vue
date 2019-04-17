@@ -3,7 +3,7 @@
         <!-- Basic tables title -->
         <div class="mb-3">
             <h6 class="mb-0 font-weight-semibold">
-                Basic tables
+                {{$t('hello_world')}}
             </h6>
             <span class="text-muted d-block">Tables with default <code>Bootstrap</code> styling</span>
         </div>

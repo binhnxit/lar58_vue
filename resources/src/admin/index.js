@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import VeeValidate from 'vee-validate'
+
 // Sync router with store
 import { sync } from 'vuex-router-sync'
 
@@ -8,16 +8,17 @@ import router from './router'
 import '../bootstrap'
 import './components'
 import './plugins'
+import i18n from './lang/i18n'
 import App from './App'
 
 window.Popper = require('popper.js').default
 
-Vue.use(VeeValidate)
 
 // Sync store with router
 sync(store, router)
 
 const vm = new Vue({
+  i18n,
   store,
   router,
   render: h => h(App)

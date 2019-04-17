@@ -33,6 +33,7 @@ class UserController extends Controller
     public function checkEmail(Request $request)
     {
         $email       = $request->get('email');
+        \Log::info($email);
         $userService = new UserService();
         $data        = $userService->checkEmail($email);
 

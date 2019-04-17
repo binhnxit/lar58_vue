@@ -69,6 +69,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   metaInfo: function metaInfo() {
@@ -77,7 +79,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     };
   },
   data: function data() {
-    return {};
+    return {
+      form: {
+        name: null,
+        email: null,
+        password: null,
+        password_confirmation: null
+      }
+    };
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])('user', {
     user: 'user'
@@ -91,7 +100,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       e.preventDefault();
       this.$validator.validate().then(function (valid) {
         if (valid) {
-          _this.$store.dispatch('user/createUser', _this.user);
+          _this.$store.dispatch('user/createUser', _this.form);
         }
       });
     }
@@ -127,7 +136,13 @@ var render = function() {
             {
               key: "title",
               fn: function() {
-                return [_vm._v("\n            Create new user\n        ")]
+                return [
+                  _vm._v(
+                    "\n            " +
+                      _vm._s(_vm.$t("user.title_create")) +
+                      "\n        "
+                  )
+                ]
               },
               proxy: true
             }
@@ -138,7 +153,7 @@ var render = function() {
           _c("div", { staticClass: "col-md-12" }, [
             _c("form", { on: { submit: _vm.onSubmit } }, [
               _c("div", { staticClass: "form-group" }, [
-                _c("label", [_vm._v("Name:")]),
+                _c("label", [_vm._v(_vm._s(_vm.$t("user.label.name")))]),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -151,8 +166,8 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.user.name,
-                      expression: "user.name"
+                      value: _vm.form.name,
+                      expression: "form.name"
                     }
                   ],
                   staticClass: "form-control",
@@ -160,15 +175,15 @@ var render = function() {
                     type: "text",
                     name: "name",
                     "error-messages": _vm.errors.collect("name"),
-                    placeholder: "Your name"
+                    placeholder: _vm.$t("user.hint.name")
                   },
-                  domProps: { value: _vm.user.name },
+                  domProps: { value: _vm.form.name },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.user, "name", $event.target.value)
+                      _vm.$set(_vm.form, "name", $event.target.value)
                     }
                   }
                 }),
@@ -191,36 +206,36 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
-                _c("label", [_vm._v("Email:")]),
+                _c("label", [_vm._v(_vm._s(_vm.$t("user.label.email")))]),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
                     {
                       name: "validate",
                       rawName: "v-validate",
-                      value: "required|email",
-                      expression: "'required|email'"
+                      value: "required|email|email_checked",
+                      expression: "'required|email|email_checked'"
                     },
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.user.email,
-                      expression: "user.email"
+                      value: _vm.form.email,
+                      expression: "form.email"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: {
                     type: "email",
                     name: "email",
-                    placeholder: "Your email"
+                    placeholder: _vm.$t("user.hint.email")
                   },
-                  domProps: { value: _vm.user.email },
+                  domProps: { value: _vm.form.email },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.user, "email", $event.target.value)
+                      _vm.$set(_vm.form, "email", $event.target.value)
                     }
                   }
                 }),
@@ -243,7 +258,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
-                _c("label", [_vm._v("Password:")]),
+                _c("label", [_vm._v(_vm._s(_vm.$t("user.label.password")))]),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -256,8 +271,8 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.user.password,
-                      expression: "user.password"
+                      value: _vm.form.password,
+                      expression: "form.password"
                     }
                   ],
                   ref: "password",
@@ -265,15 +280,15 @@ var render = function() {
                   attrs: {
                     type: "password",
                     name: "password",
-                    placeholder: "Your password"
+                    placeholder: _vm.$t("user.hint.password")
                   },
-                  domProps: { value: _vm.user.password },
+                  domProps: { value: _vm.form.password },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.user, "password", $event.target.value)
+                      _vm.$set(_vm.form, "password", $event.target.value)
                     }
                   }
                 }),
@@ -296,7 +311,9 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
-                _c("label", [_vm._v("Password Confirmation:")]),
+                _c("label", [
+                  _vm._v(_vm._s(_vm.$t("user.label.password_confirmation")))
+                ]),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
@@ -305,13 +322,32 @@ var render = function() {
                       rawName: "v-validate",
                       value: "required|confirmed:password",
                       expression: "'required|confirmed:password'"
+                    },
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.password_confirmation,
+                      expression: "form.password_confirmation"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: {
                     type: "password",
                     name: "password_confirmation",
-                    placeholder: "Your confirmation password"
+                    placeholder: _vm.$t("user.hint.password_confirmation")
+                  },
+                  domProps: { value: _vm.form.password_confirmation },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.form,
+                        "password_confirmation",
+                        $event.target.value
+                      )
+                    }
                   }
                 }),
                 _vm._v(" "),
@@ -361,7 +397,7 @@ var render = function() {
                       attrs: { type: "submit" }
                     },
                     [
-                      _vm._v("Submit "),
+                      _vm._v(_vm._s(_vm.$t("btn.submit")) + " "),
                       _c("i", { staticClass: "icon-paperplane ml-2" })
                     ]
                   )
