@@ -1,5 +1,4 @@
 {
     "/js/app-admin.js": "/js/app-admin.js",
-    "/js/app-admin-login.js": "/js/app-admin-login.js",
-    "/js/pace.min.js": "/js/pace.min.js"
+    "/js/app-admin-login.js": "/js/app-admin-login.js"
 }

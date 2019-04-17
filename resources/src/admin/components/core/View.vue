@@ -30,9 +30,12 @@
             <div class="breadcrumb-line breadcrumb-line-light header-elements-md-inline">
                 <div class="d-flex">
                     <div class="breadcrumb">
-                        <a href="index.html" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Home</a>
-                        <a href="table_basic.html" class="breadcrumb-item">Tables</a>
-                        <span class="breadcrumb-item active">Basic</span>
+                        <router-link v-for="(breadcrumb, idx) in breadcrumbList" class="breadcrumb-item"
+                                     :to="breadcrumb.link"
+                                     :key="idx">
+                            <i class="icon-home2 mr-2" v-show="idx === 0"></i>
+                            {{breadcrumb.name}}
+                        </router-link>
                     </div>
 
                     <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
@@ -88,12 +91,14 @@
     data() {
       return {
         titleHeader: null,
+        breadcrumbList: [],
       }
     },
 
     watch: {
       '$route'(val) {
         this.titleHeader = val.name
+        this.breadcrumbList = val.meta.breadcrumb
       }
     },
   }

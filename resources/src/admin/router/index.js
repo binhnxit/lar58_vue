@@ -14,13 +14,14 @@ import Meta from 'vue-meta'
 // Routes
 import paths from './paths'
 
-function route(path, view, name) {
+function route(path, view, name, meta) {
   return {
     name: name || view,
     path,
     component: (resovle) => import(
       `admin/views/${view}.vue`
-      ).then(resovle)
+      ).then(resovle),
+    meta: meta
   }
 }
 
@@ -29,7 +30,7 @@ Vue.use(VueRouter)
 // Create a new router
 const router = new VueRouter({
   mode: 'history',
-  routes: paths.map(path => route(path.path, path.view, path.name)).concat([
+  routes: paths.map(path => route(path.path, path.view, path.name, path.meta)).concat([
     {path: '*', redirect: '/dashboard'}
   ]),
   base: '/admin/',

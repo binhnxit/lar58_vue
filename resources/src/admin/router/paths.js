@@ -8,21 +8,32 @@ export default [
     path: '/dashboard',
     // Relative to /admin/views
     name: 'Dashboard',
-    view: 'Dashboard'
+    view: 'Dashboard',
+    meta: {
+      breadcrumb: [
+        {name: 'Dashboard', link: '/dashboard'}
+      ]
+    }
   },
   {
     path: '/users',
     name: 'Users List',
-    view: 'Users'
-  },
-  {
-    path: '/tables',
-    name: 'Tables Page',
-    view: 'Tables'
+    view: 'users/Users',
+    meta: {
+      breadcrumb: [
+        {name: 'Users', link: '/users'}
+      ]
+    }
   },
   {
     path: '/users/create',
     name: 'User Create',
-    view: 'UserCreate'
+    view: 'users/UserCreate',
+    meta: {
+      breadcrumb: [
+        {name: 'Users', link: '/users'},
+        {name: 'Create User', link: '/users/create'}
+      ]
+    }
   }
 ]

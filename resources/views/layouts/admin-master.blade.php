@@ -14,6 +14,5 @@
 <body class="navbar-top">
 @yield('main-content')
 @yield('scripts')
-<script src="{{asset(mix('js/pace.min.js'))}}"></script>
 </body>
 </html>

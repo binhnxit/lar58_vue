@@ -35,16 +35,6 @@
     computed: {
       ...mapState('app', {isLoading: 'isLoading'})
     },
-
-    watch: {
-      isLoading: (val) => {
-        if (val) {
-          NProgress.start()
-        } else {
-          NProgress.done()
-        }
-      }
-    }
   }
 </script>
 
