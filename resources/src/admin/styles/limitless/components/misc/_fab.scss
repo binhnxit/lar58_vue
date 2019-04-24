@@ -73,7 +73,7 @@
             bottom: $nav-link-height + rem-calc($navbar-border-width * 2) + ($spacer * 2);
         }
     }
-
+    
     // Right placement
     .fab-menu-top-right,
     .fab-menu-bottom-right {
@@ -224,7 +224,7 @@
         // Show shadow in disabled state
         &:disabled,
         &.disabled {
-            box-shadow: $shadow-depth1; 
+           box-shadow: $shadow-depth1; 
         }
     }
 

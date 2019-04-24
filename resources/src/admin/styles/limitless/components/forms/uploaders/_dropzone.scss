@@ -140,8 +140,8 @@
 			min-width: $dropzone-preview-width;
 			border: $card-border-width solid $card-border-color;
 			padding: $dropzone-preview-spacer;
-			box-shadow: $card-box-shadow;
 			@include border-radius($border-radius);
+			@include box-shadow($card-box-shadow);
 
 			// Hide thumbnail in file preview
 			&.dz-file-preview [data-dz-thumbnail] {

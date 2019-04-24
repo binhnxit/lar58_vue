@@ -9,7 +9,6 @@
 // Button base
 .btn {
     position: relative;
-    text-transform: uppercase;
 
     // Button states
     &:not(.bg-transparent):not([class*=btn-outline]):not(.btn-light):not(.btn-link):not([class*=alpha-]):not(.fab-menu-btn) {
@@ -100,7 +99,6 @@
 
 // Link buttons
 .btn-link {
-    font-weight: $btn-font-weight;
 
     // Opened dropdown
     .show > &.dropdown-toggle {

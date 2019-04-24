@@ -98,7 +98,6 @@
     // Editor
     .note-editor {
         position: relative;
-        border-width: $card-border-width;
 
         // Drop container
         .note-dropzone {
@@ -189,8 +188,10 @@
 
     // Toolbar
     .note-toolbar:not([class*=bg-]):not([class*=alpha-]) {
-        padding: $card-spacer-x;
-        padding-top: ($card-spacer-x / 2);
+        background-color: $card-cap-bg;
+        border-bottom: $card-border-width solid $card-border-color;
+        padding: $card-spacer-y $card-spacer-x;
+        padding-top: 0;
         margin: 0;
     }
 
@@ -425,7 +426,7 @@
 
         // Closest button group
         > .btn-group {
-            margin-top: ($card-spacer-x / 2);
+            margin-top: $card-spacer-y;
             margin-right: $card-spacer-y;
 
             &:last-child {

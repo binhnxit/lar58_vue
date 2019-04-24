@@ -995,7 +995,7 @@
         cursor: pointer;
         margin-bottom: 0.1875rem;
         position: relative;
-        //@include size(0.625rem);
+        @include size(0.625rem);
         @include border-radius($border-radius);
 
         &:after {
@@ -1037,7 +1037,7 @@
             cursor: pointer;
             top: 0;
             display: none;
-            //@include size(0.625rem);
+            @include size(0.625rem);
             @include border-radius($border-radius);
 
             // Clickable
@@ -1064,7 +1064,7 @@
         font-size: $font-size-base;
         cursor: pointer;
         background-color: $gray-300;
-        //@include size(0.625rem);
+        @include size(0.625rem);
         @include border-radius($border-radius-round);
     }
 
@@ -1867,7 +1867,7 @@
             right: ($datepicker-item-padding / 3);
             border-top: $datepicker-item-padding solid $datepicker-item-active-color;
             border-left: $datepicker-item-padding solid transparent;
-            //@include size(0);
+            @include size(0);
         }
 
         // Range

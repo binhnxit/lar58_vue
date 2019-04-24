@@ -47,47 +47,21 @@ select[size] {
 // Textual form controls
 .form-control {
     background-clip: border-box;
-    border-width: $input-border-width 0;
-    border-top-color: transparent !important;
 
-    // Disabled and readonly states
-    &:disabled,
-    &[readonly] {
-        border-bottom-style: dashed;
-    }
+    // Disabled state
     &:disabled {
         color: $input-disabled-color;
     }
-    &[readonly] {
-        box-shadow: none;
-        border-bottom-color: $input-border-color !important;
-    }
 
-    // Apply contextual shadow that acts as a second border
-    &.border-success:focus {
-        box-shadow: 0 $input-border-width 0 theme-color('success');
-    }
-    &.border-danger:focus {
-        box-shadow: 0 $input-border-width 0 theme-color('danger');
-    }
-    &.border-warning:focus {
-        box-shadow: 0 $input-border-width 0 theme-color('warning');
-    }
-    &.border-primary:focus {
-        box-shadow: 0 $input-border-width 0 theme-color('primary');
-    }
-    &.border-info:focus {
-        box-shadow: 0 $input-border-width 0 theme-color('info');
-    }
+    // Input with custom color
+    &[class*=bg-]:not(.bg-white):not(.bg-light):not(.bg-transparent) {
 
-    // On dark background
-    &.text-white {
-        border-bottom-color: $input-light-border-color;
-
-        // Focus state
-        &:focus {
-            border-bottom-color: $input-light-border-active-color;
-            box-shadow: 0 $input-border-width 0 $input-light-border-active-color;
+        // Disabled state
+        &:disabled,
+        &[readonly] {
+            background-color: $input-dark-disabled-bg;
+            color: $input-dark-disabled-color;
+            border-color: $input-dark-disabled-border-color;
         }
 
         // Placeholder color

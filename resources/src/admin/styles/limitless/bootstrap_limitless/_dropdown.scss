@@ -11,17 +11,6 @@
 // Base styles
 //
 
-// Base container
-.dropdown-menu {
-    background-clip: border-box;
-
-    // Right alignment
-    &-right {
-        left: auto;
-        right: 0;
-    }
-}
-
 // Dropdown menu item
 .dropdown-item {
     display: flex;

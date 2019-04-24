@@ -84,7 +84,7 @@
         vertical-align: top;
         margin-left: $fancytree-node-padding-x;
         margin-top: ($line-height-computed + ($fancytree-node-padding-y * 2) - $icon-font-size) / 2;
-        //@include size($icon-font-size);
+        @include size($icon-font-size);
     }
 
     // Checkboxes
@@ -146,7 +146,7 @@
         margin-right: auto;
         display: inline-block;
         text-align: center;
-        //@include size($icon-font-size);
+        @include size($icon-font-size);
 
         &:after {
             content: '\ed6c';

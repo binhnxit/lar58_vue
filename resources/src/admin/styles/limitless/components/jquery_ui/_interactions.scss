@@ -45,7 +45,7 @@
 			left: 0;
 			top: 0;
 			border: $border-width dashed rgba($black, 0.2);
-			////@include size(100%);
+			@include size(100%);
 		}
 	}
 

@@ -12,8 +12,15 @@
 
 // Base class
 .navbar {
+    border-top: $navbar-border-width solid transparent;
+    border-bottom: $navbar-border-width solid transparent;
     align-items: stretch;
-    box-shadow: $shadow-depth1;
+
+    // If navbar is at the bottom of the page, remove bottom borders
+    .page-content ~ &:not(.navbar-component):last-of-type,
+    .content ~ &:not(.navbar-component):last-of-type {
+        border-bottom-color: transparent;
+    }
 }
 
 // Navbar as a stand alone component
@@ -25,6 +32,16 @@
     .page-header & {
         margin-left: $page-header-padding-x;
         margin-right: $page-header-padding-x;
+    }
+
+    // Default navbar
+    &.navbar-dark {
+        border-color: $navbar-dark-border-color;
+    }
+
+    // Default navbar
+    &.navbar-light {
+        border-color: $navbar-light-border-color;
     }
 }
 
@@ -100,10 +117,6 @@
 
     // Navigation with bottom highlight
     .navbar-nav-highlight & {
-        text-transform: uppercase;
-        font-size: $font-size-sm;
-        line-height: $line-height-sm;
-        font-weight: $font-weight-semibold;
 
         // Highlight
         &:before {
@@ -226,7 +239,7 @@
                         }
                     }
                 }
-                    
+
                 // Add top borders for better visual separation
                 &.navbar-dark .navbar-collapse {
                     border-top: $navbar-dark-collapse-border-width solid $navbar-dark-collapse-border-color;
@@ -284,7 +297,7 @@
             }
 
             @include media-breakpoint-up($next) {
-
+                
                 // Logo
                 .navbar-brand {
                     min-width: $sidebar-base-width - $navbar-padding-x;
@@ -313,13 +326,14 @@
 .navbar-light {
     color: $navbar-light-color;
     background-color: $navbar-light-bg;
+    border-bottom-color: $navbar-light-border-color;
 
     // After page header content
     .page-header-content + &,
     .content + &,
     .page-content + &,
     .fixed-bottom > &:first-child {
-        border-top: $navbar-border-width solid $navbar-light-border-color;
+        border-top-color: $navbar-light-border-color;
     }
 
     // Navbar nav
@@ -392,6 +406,16 @@
 .navbar-dark {
     color: $navbar-dark-color;
     background-color: $navbar-dark-bg;
+    border-bottom-color: $navbar-dark-border-color;
+
+
+    // After page header content
+    .page-header-content + &,
+    .content + &,
+    .page-content + &,
+    .fixed-bottom > &:first-child {
+        border-top-color: $navbar-dark-border-color;
+    }
 
     // Navbar nav
     // Again, override default BS styles since they affect
@@ -679,44 +703,44 @@
 // Top placement
 .navbar {
     &-top {
-        padding-top: $nav-link-height;
+        padding-top: $nav-link-height + rem-calc($navbar-border-width * 2);
     }
     &-lg-top {
-        padding-top: $nav-link-height-lg;
+        padding-top: $nav-link-height-lg + rem-calc($navbar-border-width * 2);
     }
     &-sm-top {
-        padding-top: $nav-link-height-sm;
+        padding-top: $nav-link-height-sm + rem-calc($navbar-border-width * 2);
     }
     &-lg-md-top {
-        padding-top: ($nav-link-height-lg + $nav-link-height);
+        padding-top: ($nav-link-height-lg + rem-calc($navbar-border-width * 2)) + ($nav-link-height + rem-calc($navbar-border-width * 2));
     }
     &-md-md-top {
-        padding-top: ($nav-link-height * 2);
+        padding-top: ($nav-link-height + rem-calc($navbar-border-width * 2)) * 2;
     }
     &-sm-md-top {
-        padding-top: ($nav-link-height-sm + $nav-link-height);
+        padding-top: ($nav-link-height-sm + rem-calc($navbar-border-width * 2)) + ($nav-link-height + rem-calc($navbar-border-width * 2));
     }
     &-lg-sm-top {
-        padding-top: ($nav-link-height-lg + $nav-link-height-sm);
+        padding-top: ($nav-link-height-lg + rem-calc($navbar-border-width * 2)) + ($nav-link-height-sm + rem-calc($navbar-border-width * 2));
     }
 }
 
 // Bottom placement
 .navbar {
     &-bottom {
-        padding-bottom: $nav-link-height;
+        padding-bottom: $nav-link-height + rem-calc($navbar-border-width * 2);
     }
     &-lg-md-bottom {
-        padding-bottom: ($nav-link-height-lg + $nav-link-height);
+        padding-bottom: ($nav-link-height-lg + rem-calc($navbar-border-width * 2)) + ($nav-link-height + rem-calc($navbar-border-width * 2));
     }
     &-md-md-bottom {
-        padding-bottom: ($nav-link-height * 2);
+        padding-bottom: ($nav-link-height + rem-calc($navbar-border-width * 2)) * 2;
     }
     &-sm-md-bottom {
-        padding-bottom: ($nav-link-height-sm + $nav-link-height);
+        padding-bottom: ($nav-link-height-sm + rem-calc($navbar-border-width * 2)) + ($nav-link-height + rem-calc($navbar-border-width * 2));
     }
     &-lg-sm-bottom {
-        padding-bottom: ($nav-link-height-lg + $nav-link-height-sm);
+        padding-bottom: ($nav-link-height-lg + rem-calc($navbar-border-width * 2)) + ($nav-link-height-sm + rem-calc($navbar-border-width * 2));
     }
 }
 
@@ -823,8 +847,22 @@
 // Navbar header - allows to use custom background colors
 // in logo section. Uses negative margins.
 .navbar-header {
+    margin-top: -($navbar-border-width);
+    margin-bottom: -($navbar-border-width);
     margin-left: -($navbar-padding-x);
     margin-right: $navbar-padding-x;
+    border-top: $navbar-border-width solid transparent;
+    border-bottom: $navbar-border-width solid transparent;
+
+    // Dark header
+    &.navbar-dark {
+        border-bottom-color: $navbar-dark-border-color;
+    }
+
+    // Light header
+    &.navbar-light {
+        border-bottom-color: $navbar-light-border-color;
+    }
 
     // Logo
     .navbar-brand {

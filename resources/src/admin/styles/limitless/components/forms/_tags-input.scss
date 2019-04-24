@@ -11,9 +11,13 @@
 
     // Base
     .bootstrap-tagsinput {
+        background-color: $input-bg;
+        border: $input-border-width solid $input-border-color;
         display: inline-block;
+        padding: 0 0 $tags-spacer 0;
         vertical-align: middle;
         width: 100%;
+        @include border-radius($tag-border-radius);
 
         // Input field
         input {
@@ -21,9 +25,9 @@
             border: 0;
             outline: 0;
             background-color: transparent;
-            padding: $input-padding-y $input-padding-x;
+            padding: ($input-padding-y - $tags-spacer) $input-padding-x;
             margin-top: $tags-spacer;
-            margin-bottom: $tags-spacer;
+            margin-left: $tags-spacer;
             width: auto !important;
             max-width: 50%;
             min-width: 4rem;
@@ -47,8 +51,8 @@
 
         // Tag
         .tag {
-            margin-right: $element-spacer-x;
-            padding: $input-btn-padding-y $input-btn-padding-x;
+            margin: $tags-spacer 0 0 $tags-spacer;
+            padding: ($input-btn-padding-y - $tags-spacer) $input-btn-padding-x;
             padding-right: ($input-btn-padding-x + ($icon-font-size * 1.5));
             float: left;
             position: relative;
@@ -65,15 +69,6 @@
                     background-color: $tags-hover-bg;
                     color: $tags-hover-color;
                 }
-            }
-
-            // Since border is removed, compensate difference between heights
-            // and add vertical spacing to items in case of wrapping by adding
-            // vertical margin equal to 2 borders
-            &,
-            input {
-                margin-top: $tags-spacer;
-                margin-bottom: $tags-spacer;
             }
 
             // Remove button

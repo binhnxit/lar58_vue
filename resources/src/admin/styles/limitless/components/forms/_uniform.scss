@@ -24,7 +24,7 @@
 		&,
 		span,
 		input {
-			//@include size($checkbox-size);
+			@include size($checkbox-size);
 		}
 
 		// Input setup
@@ -280,23 +280,19 @@
 			color: $text-muted;
 			padding: $input-padding-y $input-padding-x;
 			flex: 1;
-			border-top: $input-border-width solid transparent;
-			border-bottom: $input-border-width solid $input-border-color;
+			border: $input-border-width solid $input-border-color;
+			border-right: 0;
+			background-color: $input-bg;
 			text-align: left;
 			word-break: break-word;
-		}
-
-		// Add .text-white to file input to adapt it for dark backgrounds
-		.text-white ~ .filename {
-			color: $white;
-			border-bottom-color: $input-light-border-color;
+	        @include border-left-radius($input-border-radius);
 		}
 
 		// Action button
 		.action {
-			margin-left: $element-spacer-x-lg;
 			z-index: 1;
-			@include border-radius($btn-border-radius);
+			@include border-radius(0);
+	        @include border-right-radius($input-border-radius);
 		}
 
 		// Hide file input
@@ -316,15 +312,8 @@
 
 		// Disabled state
 		&.disabled {
-
-			// File name
 			.filename {
-				border-bottom-style: dashed;
-			}
-
-			// Action button
-			.action {
-				opacity: 0.75;
+				background-color: $input-disabled-bg;
 			}
 
 			// Cursor
@@ -381,28 +370,28 @@
 	    position: relative;
 	    display: block;
 	    width: 100%;
+	    height: $input-height;
 	    padding: $input-padding-y $input-padding-x;
 	    font-size: $font-size-base;
 	    line-height: $input-btn-line-height;
 	    color: $input-color;
-	    border-top: $input-border-width solid transparent;
-	    border-bottom: $input-border-width solid $input-border-color;
+	    background-color: $input-bg;
+	    border: $input-border-width solid $input-border-color;
+	    @include border-radius($input-border-radius);
 		@include transition(all ease-in-out $component-transition-timer);
 
-	    // Focus state
-	    &.focus {
-			border-bottom-color: $input-focus-border-color;
-			box-shadow: $input-focus-box-shadow;
+		// Hover state
+	    @include hover-focus {
+		    @include box-shadow($hover-shadow-lighter);
 	    }
 
-	    // Use .text-white in 'selectClass' option to adapt for dark backgrounds
-	    &.text-white {
-	    	border-bottom-color: $input-light-border-color;
+	    // Custom colors
+	    &[class*=bg-]:not(.bg-white):not(.bg-light):not(.bg-transparent) {
+	    	color: $white;
 
-		    // Focus state
-		    &.focus {
-				border-bottom-color: $input-light-border-active-color;
-				box-shadow: 0 $input-border-width 0 $input-light-border-active-color;
+	    	// Hover state
+		    @include hover-focus {
+			    @include box-shadow($hover-shadow-darker);
 		    }
 	    }
 
@@ -411,7 +400,7 @@
 		    display: block;
 		    position: relative;
 		    text-align: left;
-		    padding-right: ($input-padding-x + ($icon-font-size * 1.5));
+		    padding-right: ($input-padding-x + $icon-font-size);
 		    width: 100%;
 		    @include text-truncate();
 
@@ -446,12 +435,24 @@
 
 		// Disabled state
 		&.disabled {
-			color: $input-disabled-color;
-			border-bottom-style: dashed;
+			&:not([class*=bg-]) {
+				color: $input-disabled-color;
+				background-color: $input-disabled-bg;
+			}
+
+			// Hover state
+			@include hover-focus {
+				@include box-shadow(none !important);
+			}
 
 			// Cursor
 			select {
 				cursor: $cursor-disabled;
+			}
+
+			// Fade out if select has custom color
+			&[class*=bg-]:not(.bg-white):not(.bg-light):not(.bg-transparent) {
+				opacity: 0.75;
 			}
 		}
 	}
@@ -463,7 +464,15 @@
 
 	// Large
 	.form-control-styled-lg {
+
+		// File input size
+		select:not([size]):not([multiple]) {
+			height: $input-height-lg;
+		}
+
+		// File name text
 		.uniform-select {
+			height: $input-height-lg;
 			padding: $input-padding-y-lg $input-padding-x-lg;
 			font-size: $font-size-lg;
 			line-height: $input-line-height-lg;
@@ -472,7 +481,15 @@
 
 	// Small
 	.form-control-styled-sm {
+
+		// File input size
+		select:not([size]):not([multiple]) {
+			height: $input-height-sm;
+		}
+
+		// File name text
 		.uniform-select {
+			height: $input-height-sm;
 			padding: $input-padding-y-sm $input-padding-x-sm;
 			font-size: $font-size-sm;
 			line-height: $input-line-height-sm;

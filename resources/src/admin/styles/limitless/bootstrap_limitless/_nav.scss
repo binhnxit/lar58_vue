@@ -94,6 +94,7 @@
 
     // Link
     .nav-link {
+        border-top-color: transparent;
         @include border-top-radius(0);
 
         // Top highlight line
@@ -107,8 +108,6 @@
 
     // Active state
     .nav-link.active {
-        border-top-color: $nav-tabs-highlight-link-border-color;
-
         &:before {
             background-color: $nav-tabs-highlight-link-border-color;
         }
@@ -190,13 +189,12 @@
     // Link
     .nav-link {
         border-width: 0;
-        margin-bottom: -($nav-tabs-border-width);
 
         // Bottom highlight line
         &:before {
             height: $nav-tabs-bottom-link-border-width;
             top: auto;
-            bottom: 0;
+            bottom: -($nav-tabs-border-width);
         }
     }
 
@@ -221,7 +219,6 @@
 .nav-tabs-solid {
     background-color: $nav-tabs-solid-bg;
     border: $nav-tabs-border-width solid $nav-tabs-border-color;
-    box-shadow: $shadow-depth1;
 
     // Item
     .nav-item {
@@ -281,7 +278,6 @@
     // Link
     .nav-link {
         justify-content: flex-start;
-        border-left-width: 0;
 
         // Override border colors
         &,
@@ -297,7 +293,7 @@
             position: absolute;
             top: -$nav-tabs-border-width;
             bottom: -$nav-tabs-border-width;
-            left: 0;
+            left: -$nav-tabs-border-width;
             width: $nav-tabs-highlight-link-border-width;
             @include transition(background-color ease-in-out $component-transition-timer);
         }
@@ -322,7 +318,7 @@
             // Reverse highlight line alignment
             &:before {
                 left: auto;
-                right: 0;
+                right: -$nav-tabs-border-width;
             }
         }
 

@@ -1,10 +1,10 @@
 /* ------------------------------------------------------------------------------
- *
- *  # Bootstrap Duallistbox
- *
- *  Styles for listbox.js - A responsive dual listbox widget optimized for Bootstrap
- *
- * ---------------------------------------------------------------------------- */
+*
+*  # Bootstrap Duallistbox
+*
+*  Styles for listbox.js - A responsive dual listbox widget optimized for Bootstrap
+*
+* ---------------------------------------------------------------------------- */
 
 // Check if component is enabled
 @if $enable-dual-listbox {
@@ -19,6 +19,7 @@
 
         // Select
         select.form-control {
+            padding: $input-btn-padding-y;
             @include border-top-radius(0);
         }
         option {
@@ -44,21 +45,6 @@
                 .removeall {
                     width: 100%;
                     @include border-top-radius($btn-border-radius);
-                    @include border-bottom-radius($btn-border-radius);
-                }
-
-                // Border radius fixes
-                .moveall,
-                .remove {
-                    @if $enable-rounded {
-                        border-bottom-left-radius: $btn-border-radius;
-                    }
-                }
-                .move,
-                .removeall {
-                    @if $enable-rounded {
-                        border-bottom-right-radius: $btn-border-radius;
-                    }
                 }
 
                 // Spacing between buttons

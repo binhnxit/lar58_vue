@@ -16,8 +16,8 @@
 	    position: absolute;
 	    height: auto;
 	    z-index: 2;
-	    box-shadow: $notification-box-shadow;
 	    @include border-radius($border-radius);
+	    @include box-shadow($notification-box-shadow);
 
 	    // Related to window
 	    body > & {
@@ -211,7 +211,7 @@
 	    left: 0;
 	    position: absolute;
 	    z-index: 1;
-	    //@include size(100%);
+	    @include size(100%);
 
 	    body > & {
 		    position: fixed;
@@ -272,7 +272,7 @@
 	    position: relative;
 	    display: inline-block;
 	    outline: 0;
-	    //@include size($font-size-sm);
+	    @include size($font-size-sm);
 
 	    // Icons
 	    &:after {

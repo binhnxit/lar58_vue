@@ -169,8 +169,7 @@
 		background-color: $btn-light-bg;
 		border: $btn-border-width solid $btn-light-border-color;
 		color: $btn-light-color;
-		text-transform: uppercase;
-		@include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-line-height, 0);
+		@include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-line-height, $btn-border-radius);
 		@include transition($btn-transition);
 
 		// Remove outline
@@ -179,7 +178,7 @@
 		}
 
 		// Hover and active states
-		&:not([class*=bg-]):not(.ui-selectmenu-button) {
+		&:not([class*=bg-]) {
 			&:hover,
 			&:focus,
 			&:active {
@@ -198,7 +197,8 @@
 
 		// Colored button
 		&[class*=bg-]:not(.bg-transparent):not(.bg-white):not(.bg-light) {
-			@include hover-focus {
+			&:hover,
+			&:focus {
 				color: $white;
 				box-shadow: $btn-dark-hover-box-shadow;
 			}
@@ -235,17 +235,6 @@
 		.ui-button-icon-space {
 			display: inline-block;
 			width: $element-spacer-x;
-		}
-
-		// Rounded corners
-		&.ui-corner-left {
-			@include border-left-radius($btn-border-radius);
-		}
-		&.ui-corner-right {
-			@include border-right-radius($btn-border-radius);
-		}
-		&.ui-corner-all {
-			@include border-radius($btn-border-radius);
 		}
 	}
 
@@ -291,26 +280,26 @@
 
 		// Child buttons
 		.ui-button {
+			border-radius: 0;
 			margin-left: -($btn-border-width);
 			float: left;
-		}
-
-		// Select menu for combo input
-		.ui-selectmenu-button {
-			&:focus {
-				border-bottom-color: $btn-light-border-color;
-				box-shadow: none;
-			}
-			&:after {
-				right: 50%;
-				transform: translateX(50%);
-			}
 		}
 
 		// Remove left margin for first childs
 		.ui-button:first-child,
 		.ui-helper-hidden-accessible:first-child + .ui-button {
 			margin-left: 0;
+		}
+
+		// Add border radius for the first button
+		.ui-button:first-child,
+		.ui-helper-hidden-accessible:first-child + .ui-button:not(:last-child) {
+			@include border-left-radius($btn-border-radius);
+		}
+
+		// Add border radius for the last button
+		.ui-button:last-of-type {
+			@include border-right-radius($btn-border-radius);
 		}
 	}
 
@@ -559,7 +548,7 @@
 						right: ($datepicker-item-padding / 3);
 						border-top: $datepicker-item-padding solid darken($datepicker-item-today-bg, 50%);
 						border-left: $datepicker-item-padding solid transparent;
-						////@include size(0);
+						@include size(0);
 					}
 				}
 			}
@@ -605,9 +594,9 @@
 	.ui-datepicker-trigger {
 		position: absolute;
 		top: 4px;
-		right: 0;
+		right: 5px;
 		z-index: 4;
-		padding: 6px 0;
+		padding: 6px;
 		cursor: pointer;
 	}
 
@@ -699,7 +688,6 @@
 		border: 0;
 		font-size: 0;
 		text-indent: 0;
-		opacity: 0.75;
 
 		// Cross icon
 		&:after {
@@ -713,9 +701,10 @@
 		}
 
 		// Remove default button shadows
-		@include hover-focus {
+		&:hover,
+		&:focus {
 			background-color: transparent !important;
-			opacity: 1;
+			box-shadow: none;
 		}
 	}
 
@@ -944,7 +933,6 @@
 			max-height: $dropdown-scrollable-max-height;
 			overflow-y: auto;
 			overflow-x: hidden;
-			margin-top: $input-border-width;
 
 			// Optgroups
 			.ui-selectmenu-optgroup {
@@ -976,7 +964,6 @@
 		text-decoration: none;
 		text-align: left;
 		outline: 0;
-		font-weight: $font-weight-normal;
 
 		// Button
 		&:not(.ui-controlgroup-item) {
@@ -984,32 +971,24 @@
 			position: relative;
 			background-color: $input-bg;
 			border: $input-border-width solid $input-border-color;
-            border-width: $input-border-width 0;
-            border-top-color: transparent;
 			cursor: pointer;
 			@include border-radius($input-border-radius);
 		}
 		&:not(.ui-button-icon-only) {
 			padding: $input-padding-y $input-padding-x;
-			padding-right: ($input-padding-x + ($icon-font-size * 1.5));
+			padding-right: (($input-padding-x * 2) + $icon-font-size);
 		}
 
-		// Inside combo buttons
-		.ui-controlgroup & {
-			&:hover,
-			&:focus,
-			&:active {
-				color: $btn-light-hover-color;
-				background-color: $btn-light-hover-bg;
-				border-color: $btn-light-hover-border-color;
+		// Darken on hover and focus
+		@include hover-focus {
+			box-shadow: $hover-shadow-lighter;
+		}
+
+		// Reset button styles
+		&:not([class*=bg-]) {
+			@include hover-focus {
+				background-color: $input-bg;
 			}
-		}
-
-		// Darken on focus
-		&:focus,
-		&.ui-selectmenu-button-open {
-            border-bottom-color: $input-focus-border-color;
-            box-shadow: $input-focus-box-shadow;
 		}
 
 		// Down arrow
@@ -1020,11 +999,11 @@
 	        position: absolute;
 	        top: 50%;
 	        right: $input-padding-x;
+	        text-align: right;
 	        margin-top: -($icon-font-size / 2);
 	        font-size: $icon-font-size;
 	        line-height: 1;
 	        color: inherit;
-	        text-indent: 0;
 	        @include ll-font-smoothing();
 		}
 
@@ -1034,19 +1013,22 @@
 			text-transform: none;
 			@include text-truncate();
 		}
+
+		// Opened state
+		&.ui-selectmenu-button-open {
+			box-shadow: $hover-shadow-lighter;
+		}
 	}
 
 	// Disabled menu
-	.ui-selectmenu-disabled:not(.ui-controlgroup-item) {
+	.ui-selectmenu-disabled {
 	    cursor: $cursor-disabled;
-	    background-color: $input-bg;
-	    border-bottom-style: dashed;
+	    background-color: $input-disabled-bg;
 
-	    // Focus state
-	    &:focus {
-	    	border-bottom-color: $input-border-color;
-	    	box-shadow: none;
-	    }
+	    // States
+		@include hover-focus {
+			box-shadow: none;
+		}
 	}
 
 
@@ -1059,7 +1041,7 @@
 		.ui-selectmenu-button {
 			.ui-selectmenu-text {
 				padding: $input-padding-y-lg $input-padding-x-lg;
-				padding-right: ($input-padding-x-lg + ($icon-font-size * 1.5));
+				padding-right: (($input-padding-x-lg * 2) + $icon-font-size);
 				font-size: $font-size-lg;
 				line-height: $line-height-lg;
 			}
@@ -1071,7 +1053,7 @@
 		.ui-selectmenu-button {
 			.ui-selectmenu-text {
 				padding: $input-padding-y-sm $input-padding-x-sm;
-				padding-right: ($input-padding-x-sm + ($icon-font-size * 1.5));
+				padding-right: (($input-padding-x-sm * 2) + $icon-font-size);
 				font-size: $font-size-sm;
 				line-height: $line-height-sm;
 			}
@@ -1091,7 +1073,7 @@
 			margin-right: $dropdown-icon-spacer-x;
 			background-size: $line-height-computed $line-height-computed;
 			float: left;
-			////@include size($line-height-computed);
+			@include size($line-height-computed);
 			@include border-radius($border-radius);
 		}
 
@@ -1133,21 +1115,20 @@
 			background-color: $slider-handle-bg;
 		    border: $slider-handle-border-width solid $slider-handle-border-color;
 			outline: 0;
-		    ////@include size($slider-height * 3);
+		    @include size($slider-height * 3);
 		    @include border-radius($border-radius-round);
-		    @include transition(background-color ease-in-out $component-transition-timer, box-shadow ease-in-out $component-transition-timer, transform ease-in-out $component-transition-timer);
+		    @include transition(background-color ease-in-out $component-transition-timer);
 
-		    // Scale up handle on hover
-		    &.ui-state-hover,
-		    &.ui-state-focus {
-		    	transform: scale(1.1);
-		    }
+			// Hover color
+			&.ui-state-hover,
+			&.ui-state-focus {
+				background-color: $slider-handle-hover-bg;
 
-	        // Active state
-	        &.ui-state-focus,
-	        &.ui-state-active {
-	            box-shadow: 0 0 0 0.625rem rgba($slider-handle-bg, 0.1);
-	        }
+		        // Inner circle
+		        &:after {
+		            background-color: $slider-handle-inner-hover-bg;
+		        }
+			}
 
 			// Inner circle
 			&:after {
@@ -1159,7 +1140,7 @@
 		        margin-top: -($slider-height / 2);
 		        margin-left: -($slider-height / 2);
 		        background-color: $slider-handle-inner-bg;
-		        ////@include size($slider-height);
+		        @include size($slider-height);
 		        @include border-radius($border-radius-round);
 		        @include transition(background-color ease-in-out $component-transition-timer);
 			}
@@ -1242,6 +1223,35 @@
 
 
 	//
+	// Handles
+	//
+
+	// Slider with solid handle
+	.ui-slider-solid {
+		.ui-slider-handle {
+
+			// Inner
+			&:after {
+				background-color: $white;
+				@include transition(opacity ease-in-out $component-transition-timer);
+			}
+
+			// States
+			&.ui-state-hover:after,
+			&.ui-state-active:after {
+				background-color: $white;
+				opacity: 0.75;
+			}
+		}
+	}
+
+	// White handle
+	.ui-handle-white .ui-slider-handle:after {
+		content: none;
+	}
+
+
+	//
 	// Sizing
 	//
 
@@ -1250,13 +1260,13 @@
 
 		// Handle
 		.ui-slider-handle {
-		    ////@include size($slider-height-lg * 3);
+		    @include size($slider-height-lg * 3);
 
 		    // Inner circle
 		    &:after {
 				margin-top: -($slider-height-lg / 2);
 				margin-left: -($slider-height-lg / 2);
-				////@include size($slider-height-lg);
+				@include size($slider-height-lg);
 		    }
 		}
 
@@ -1287,13 +1297,13 @@
 
 		// Handle
 		.ui-slider-handle {
-		    ////@include size($slider-height-sm * 3);
+		    @include size($slider-height-sm * 3);
 
 		    // Inner circle
 		    &:after {
 				margin-top: -($slider-height-sm / 2);
 				margin-left: -($slider-height-sm / 2);
-				////@include size($slider-height-sm);
+				@include size($slider-height-sm);
 		    }
 		}
 
@@ -1324,124 +1334,31 @@
 	// Contextual colors
 	//
 
-	.ui-slider-primary {
-		.ui-slider-range {
-			background-color: theme-color("primary");
-			border-color: theme-color("primary");
-		}
-		.ui-slider-handle {
-			&,
-			&:after {
-				background-color: theme-color("primary");
-			}
-
-	        &.ui-state-focus,
-	        &.ui-state-active {
-	            box-shadow: 0 0 0 0.625rem rgba(theme-color("primary"), 0.1);
-	        }
-		}
+	.ui-slider-primary .ui-slider-range,
+	.ui-slider-solid.ui-slider-primary .ui-slider-handle {
+		background-color: theme-color("primary");
+		border-color: theme-color("primary");
 	}
-	.ui-slider-danger {
-		.ui-slider-range {
-			background-color: theme-color("danger");
-			border-color: theme-color("danger");
-		}
-		.ui-slider-handle {
-			&,
-			&:after {
-				background-color: theme-color("danger");
-			}
-
-	        &.ui-state-focus,
-	        &.ui-state-active {
-	            box-shadow: 0 0 0 0.625rem rgba(theme-color("danger"), 0.1);
-	        }
-		}
+	.ui-slider-danger .ui-slider-range,
+	.ui-slider-solid.ui-slider-danger .ui-slider-handle {
+		background-color: theme-color("danger");
+		border-color: theme-color("danger");
 	}
-	.ui-slider-success {
-		.ui-slider-range {
-			background-color: theme-color("success");
-			border-color: theme-color("success");
-		}
-		.ui-slider-handle {
-			&,
-			&:after {
-				background-color: theme-color("success");
-			}
-
-	        &.ui-state-focus,
-	        &.ui-state-active {
-	            box-shadow: 0 0 0 0.625rem rgba(theme-color("success"), 0.1);
-	        }
-		}		
+	.ui-slider-success .ui-slider-range,
+	.ui-slider-solid.ui-slider-success .ui-slider-handle {
+		background-color: theme-color("success");
+		border-color: theme-color("success");
 	}
-	.ui-slider-warning {
-		.ui-slider-range {
-			background-color: theme-color("warning");
-			border-color: theme-color("warning");
-		}
-		.ui-slider-handle {
-			&,
-			&:after {
-				background-color: theme-color("warning");
-			}
-
-	        &.ui-state-focus,
-	        &.ui-state-active {
-	            box-shadow: 0 0 0 0.625rem rgba(theme-color("warning"), 0.1);
-	        }
-		}
+	.ui-slider-warning .ui-slider-range,
+	.ui-slider-solid.ui-slider-warning .ui-slider-handle {
+		background-color: theme-color("warning");
+		border-color: theme-color("warning");
 	}
-	.ui-slider-info {
-		.ui-slider-range {
-			background-color: theme-color("info");
-			border-color: theme-color("info");
-		}
-		.ui-slider-handle {
-			&,
-			&:after {
-				background-color: theme-color("info");
-			}
-
-	        &.ui-state-focus,
-	        &.ui-state-active {
-	            box-shadow: 0 0 0 0.625rem rgba(theme-color("info"), 0.1);
-	        }
-		}
+	.ui-slider-info .ui-slider-range,
+	.ui-slider-solid.ui-slider-info .ui-slider-handle {
+		background-color: theme-color("info");
+		border-color: theme-color("info");
 	}
-
-
-	//
-	// Handles
-	//
-
-    // Slider handle with white inner circle
-    .ui-slider-circle {
-        .ui-slider-handle {
-            &:after {
-                background-color: $white;
-            }
-        }
-    }
-
-	// White handle
-    .ui-handle-white {
-        .ui-slider-handle {
-            background-color: $white;
-            box-shadow: $shadow-depth1;
-
-            // Hide inner circle
-            &:after {
-                content: none;
-            }
-
-            // Active state
-            &.ui-state-focus,
-            &.ui-state-active {
-                box-shadow: 0 0 0 0.625rem rgba($slider-handle-bg, 0.1), $shadow-depth1;
-            }
-        }
-    }
 
 
 
@@ -1457,7 +1374,8 @@
 
 	// Input
 	.ui-spinner-input {
-		margin-right: $element-spacer-x-lg;
+		border-right: 0;
+		@include border-right-radius(0);
 	}
 
 
@@ -1485,16 +1403,24 @@
 	        @include ll-font-smoothing();
 		}
 
+		// Add rounded corders
+		&:last-child {
+			@include border-right-radius($btn-border-radius);
+		}
+
 		// Hide original icons
 		> span {
 			display: none;
+		}
+
+		// Remove left border from 2nd button
+		& + & {
+			border-left: 0;
 		}
 	}
 
 	// Up button icon
 	.ui-spinner-up {
-		@include border-left-radius($btn-border-radius);
-
 		&:after {
 			content: '\e9f7';
 		}
@@ -1502,8 +1428,6 @@
 
 	// Down button icon
 	.ui-spinner-down {
-		@include border-right-radius($btn-border-radius);
-
 		&:after {
 			content: '\e9e2';
 		}
@@ -1635,7 +1559,7 @@
 		z-index: $zindex-modal-backdrop;
 		background-color: $modal-backdrop-bg;
 		opacity: $modal-backdrop-opacity;
-		////@include size(100%);
+		@include size(100%);
 	}
 
 	//
@@ -1679,7 +1603,7 @@
 		left: 0;
 		position: absolute;
 		opacity: 0;
-		////@include size(100%);
+		@include size(100%);
 	}
 
 	// Overlay z-index

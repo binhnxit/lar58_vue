@@ -14,9 +14,8 @@
 // Card base
 .card {
     margin-bottom: $spacer;
-    box-shadow: $card-box-shadow;
-    border-width: 0;
- 
+    @include box-shadow($card-box-shadow);
+
     // Full screen mode
     &.fixed-top {
         overflow: auto;
@@ -38,11 +37,6 @@
 
 // Card header
 .card-header {
-
-    // Top border radius fix
-    .card:not([class*=border-]) & {
-        @include border-top-radius($card-border-radius);
-    }
 
     // Title
     .card-title {
@@ -259,19 +253,5 @@
                 right: 0;
             }
         }
-    }
-}
-
-
-//
-// Card group
-//
-
-.card-group {
-    box-shadow: $card-box-shadow;
-    @include border-bottom-radius($card-border-radius);
-
-    .card:not(:last-child) {
-        border-right-width: $card-border-width;
     }
 }

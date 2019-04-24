@@ -23,7 +23,6 @@
 }
 
 
-
 // Transparent breadcrumb
 .page-header-content {
 
@@ -80,7 +79,7 @@
     padding-left: $breadcrumb-line-padding-x;
     padding-right: $breadcrumb-line-padding-x;
     border-top: $breadcrumb-line-border-width solid transparent;
-    box-shadow: $shadow-depth1;
+    border-bottom: $breadcrumb-line-border-width solid transparent;
 
     // Inside page header (all levels)
     &:not(.breadcrumb-line-component):first-child {
@@ -105,9 +104,26 @@
     border-color: $breadcrumb-line-light-border-color;
     color: $body-color;
 
+    // Remove bottom border in light header
+    &:not(.breadcrumb-line-component):last-child {
+        .page-header-light & {
+            border-bottom-width: 0;
+        }
+    }
+
     // Remove borders in dark header
     .page-header-dark &:not(.breadcrumb-line-component) {
         border-top-width: 0;
+        
+        // Remove bottom border if before title
+        &:first-child {
+            border-bottom-width: 0;
+        }
+    }
+
+    // Borders in line component
+    &.breadcrumb-line-component {
+        border-color: $breadcrumb-line-light-border-color;
     }
 }
 
@@ -117,17 +133,29 @@
     border-color: transparent;
     color: $white;
 
+    // Remove bottom border in dark header
+    &:not(.breadcrumb-line-component):last-child {
+        .page-header-dark & {
+            border-bottom-width: 0;
+        }
+    }
+
     // Active state
     .breadcrumb-item {
         &.active {
             color: inherit;
         }
     }
+
+    // In dark page header
+    .page-header-dark & {
+        border-color: $breadcrumb-line-dark-border-color;
+    }
 }
 
 // As a component
 .breadcrumb-line-component {
-    border: 0;
+    border: $breadcrumb-line-border-width solid transparent;
     @include border-radius($border-radius);
     
     // Inside page header
@@ -165,7 +193,6 @@ a.breadcrumb-item {
         opacity: 0.75;
     }
 }
-
 // Links
 a.breadcrumb-elements-item, a.breadcrumb-item {
     // Linked items

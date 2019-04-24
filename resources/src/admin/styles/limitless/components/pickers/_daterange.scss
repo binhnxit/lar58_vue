@@ -279,8 +279,7 @@
         position: relative;
         margin-top: ($datepicker-padding / 2);
         border: $dropdown-border-width solid $dropdown-border-color;
-        min-width: 13rem;
-        @include border-radius($dropdown-border-radius);
+        @include border-radius($border-radius);
         @include box-shadow($dropdown-box-shadow);
 
         // List with links
@@ -336,15 +335,20 @@
                 // Text label
                 > span {
                     display: block;
+                    margin-bottom: map-get($spacers, 2);
                     color: $gray-600;
                 }
+            }
+
+            // Add top divider
+            & + .range_inputs {
+                border-top: $dropdown-border-width solid $dropdown-divider-bg;
             }
         }
 
         // Buttons area
         .range_inputs {
             padding: $datepicker-padding;
-            padding-top: 0;
 
             // Buttons
             .btn {

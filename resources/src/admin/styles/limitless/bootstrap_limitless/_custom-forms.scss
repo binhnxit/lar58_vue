@@ -90,23 +90,20 @@
 
 .custom-select {
     cursor: pointer;
-    border-width: $custom-select-border-width 0;
-    border-top-color: transparent;
     @include transition(all ease-in-out $component-transition-timer);
 
-    // But add shadow highlight
-    &:focus {
-        box-shadow: $custom-select-focus-box-shadow;
+    // Hover state
+    @include hover-focus {
+        @include box-shadow($hover-shadow-lighter);
     }
 
     // Disabled state
     &:disabled {
         cursor: $cursor-disabled;
-        border-bottom-style: dashed;
 
         // Hover state
         @include hover-focus {
-            box-shadow: none;
+            @include box-shadow(none);
         }
     }
 }
@@ -117,14 +114,5 @@
 //
 
 .custom-file-label {
-    border-width: $custom-file-border-width 0;
-    border-top-color: transparent;
     margin-bottom: 0;
-
-    // "Browse" title
-    &:after {
-        border-left: 0;
-        font-weight: $btn-font-weight;
-        text-transform: uppercase;
-    }
 }

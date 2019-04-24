@@ -17,7 +17,7 @@
         }
     }
 
-    &:not(.border-bottom-1):not(.border-bottom-2):not(.border-bottom-3):focus {
+    &:not(.border-1):not(.border-2):not(.border-3):focus {
         border-color: $input-focus-border-color;
     }
 }

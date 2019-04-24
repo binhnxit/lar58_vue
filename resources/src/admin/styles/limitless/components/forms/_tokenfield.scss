@@ -12,19 +12,16 @@
     // Base
     .tokenfield {
         height: auto;
-        border: 0;
         @include clearfix;
 
         // Remove default .form-control styling
         &.form-control:not(input) {
-            padding: 0;
+            padding: 0 0 $tags-spacer 0;
         }
 
         // Token
         .token {
-            margin-right: $element-spacer-x;
-            margin-top: $tags-spacer;
-            margin-bottom: $tags-spacer;
+            margin: $tags-spacer 0 0 $tags-spacer;
             cursor: default;
             float: left;
             position: relative;
@@ -47,7 +44,7 @@
             .token-label {
                 display: block;
                 max-width: none!important;
-                padding: $input-padding-y $input-btn-padding-x;
+                padding: ($input-btn-padding-y - $tags-spacer) $input-btn-padding-x;
                 padding-right: ($input-btn-padding-x + ($icon-font-size * 1.5));
             }
 
@@ -96,9 +93,9 @@
             width: 5.625rem!important;
             max-width: 50%;
             min-width: 4rem;
-            padding: $input-padding-y $input-padding-x;
+            padding: ($input-padding-y - $tags-spacer) $input-padding-x;
             margin-top: $tags-spacer;
-            margin-bottom: $tags-spacer;
+            margin-left: $tags-spacer;
             border: 0;
             outline: 0;
         }
@@ -162,13 +159,13 @@
         // Right spacing for close button
         .token > .token-label,
         .token > span {
-            padding: $input-padding-y-lg $input-btn-padding-x-lg;
+            padding: ($input-btn-padding-y-lg - $tags-spacer) $input-btn-padding-x-lg;
             padding-right: ($input-btn-padding-x-lg + ($font-size-xs * 1.5));
         }
 
         // Input
         .token-input {
-            padding: $input-padding-y-lg $input-padding-x-lg;
+            padding: ($input-padding-y-lg - $tags-spacer) $input-padding-x-lg;
         }
 
         // Close button
@@ -189,13 +186,13 @@
         // Tags
         .token > .token-label,
         .token > span {
-            padding: $input-padding-y-sm $input-btn-padding-x-sm;
+            padding: ($input-btn-padding-y-sm - $tags-spacer) $input-btn-padding-x-sm;
             padding-right: ($input-btn-padding-x-sm + ($font-size-xs * 1.5));
         }
 
         // Input
         .token-input {
-            padding: $input-padding-y-sm $input-padding-x-sm;
+            padding: ($input-padding-y-sm - $tags-spacer) $input-padding-x-sm;
         }
 
         // Close button

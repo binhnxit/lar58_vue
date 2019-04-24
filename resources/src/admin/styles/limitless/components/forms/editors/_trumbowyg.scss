@@ -406,11 +406,11 @@
                     font-size: $font-size-base;
                     line-height: $input-btn-line-height;
                     color: $input-color;
-                    border: $input-border-width solid transparent;
-                    border-width: $input-border-width 0;
-                    border-bottom-color: $input-border-color;
+                    background-color: $input-bg;
+                    border: $input-border-width solid $input-border-color;
                     float: right;
                     width: 70%;
+                    @include border-radius($input-border-radius);
 
                     // Remove outline
                     &:focus {

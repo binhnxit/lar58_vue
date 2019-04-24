@@ -158,7 +158,7 @@
 
 		// Overlay
 		body:not(.swal2-no-backdrop) &.swal2-shown {
-			//background-color: rgba($modal-backdrop-bg, $modal-backdrop-opacity);
+			background-color: rgba($modal-backdrop-bg, $modal-backdrop-opacity);
 		}
 	}
 
@@ -335,7 +335,7 @@
 		right: 1rem;
 		cursor: pointer;
 		opacity: .5;
-		////@include size(1.5rem);
+		@include size(1.5rem);
 	    @include transition(opacity ease-in-out .15s);
 
 	    // Hover/focus states
@@ -427,17 +427,13 @@
 		@include plain-hover-focus {
 			border-color: $form-feedback-invalid-color;
 		}
-
-		&:focus {
-			box-shadow: 0 $input-border-width 0 theme-color('danger');
-		}
 	}
 
 	// Validation error message
 	.swal2-validationerror {
 		background-color: $gray-200;
 		overflow: hidden;
-		padding: $input-btn-padding-y $input-btn-padding-x;
+		padding: $input-padding-y $input-padding-x;
 		display: none;
 		margin-top: $spacer;
 		margin-left: 0!important;
@@ -479,7 +475,7 @@
 		box-sizing: content-box;
 		cursor: default;
 		user-select: none;
-		////@include size($swal2-icon-size);
+		@include size($swal2-icon-size);
 		@include border-radius($border-radius-circle);
 
 		// Success

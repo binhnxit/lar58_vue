@@ -114,7 +114,7 @@
             position: absolute;
             padding: $dropdown-item-padding-y $dropdown-item-padding-x;
             color: inherit;
-            //@include size(100%);
+            @include size(100%);
 
             // Icon
             &:before {

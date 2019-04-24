@@ -82,7 +82,7 @@
 		width: $notification-width;
 		text-align: left;
 		display: none;
-	    box-shadow: $notification-box-shadow;
+	    @include box-shadow($notification-box-shadow);
 
 		// Header
 		.jGrowl-header {

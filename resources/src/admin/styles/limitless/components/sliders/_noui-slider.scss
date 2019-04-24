@@ -32,7 +32,7 @@
     .noUi-connects {
         position: relative;
         z-index: 1;
-        //@include size(100%);
+        @include size(100%);
     }
 
     // Wrapper for all connect elements
@@ -53,7 +53,7 @@
         left: 0;
         transform-origin: 0 0;
         /*rtl:end:ignore*/
-        //@include size(100%);
+        @include size(100%);
     }
 
     // Inherit cursor
@@ -161,7 +161,7 @@
         z-index: 1;
         border: $slider-handle-border-width solid $slider-handle-border-color;
         outline: 0;
-        //@include size($slider-height * 3);
+        @include size($slider-height * 3);
         @include border-radius($border-radius-circle);
         
         // Animate handle
@@ -185,24 +185,11 @@
             margin-top: -($slider-height / 2);
             margin-left: -($slider-height / 2);
             background-color: $slider-handle-inner-bg;
-            transform: scale(1);
-            //@include size($slider-height);
+            @include size($slider-height);
             @include border-radius($border-radius-circle);
-            @include transition(all ease-in-out $component-transition-timer);
         }
 
         // Hover state
-        &:hover {
-            transform: scale(1.1);
-        }
-
-        // Active state
-        &:focus,
-        &:active {
-            box-shadow: 0 0 0 0.625rem rgba($slider-handle-bg, 0.1);
-        }
-
-        // Hover and focus states
         @include hover-focus {
             background-color: $slider-handle-hover-bg;
 
@@ -211,6 +198,11 @@
                 background-color: $slider-handle-inner-hover-bg;
             }
         }
+    }
+
+    // White handle
+    .noui-slider-white .noUi-handle:after {
+        content: none;
     }
 
 
@@ -236,13 +228,13 @@
         // Handle
         .noUi-handle {
             top: -($slider-height-lg);
-            //@include size($slider-height-lg * 3);
+            @include size($slider-height-lg * 3);
 
             // Inner circle
             &:after {
                 margin-top: -($slider-height-lg / 2);
                 margin-left: -($slider-height-lg / 2);
-                //@include size($slider-height-lg);
+                @include size($slider-height-lg);
             }
         }
 
@@ -274,13 +266,13 @@
         // Handle
         .noUi-handle {
             top: -($slider-height-sm);
-            //@include size($slider-height-sm * 3);
+            @include size($slider-height-sm * 3);
 
             // Inner circle
             &:after {
                 margin-top: -($slider-height-sm / 2);
                 margin-left: -($slider-height-sm / 2);
-                //@include size($slider-height-sm);
+                @include size($slider-height-sm);
             }
         }
 
@@ -309,6 +301,56 @@
 
 
     //
+    // Solid slider handle
+    //
+
+    .noui-slider-solid {
+
+        // Handle
+        .noUi-handle {
+
+            // Inner circle
+            &:after {
+                background-color: $white;
+            }
+
+            // Change circle opacity on hover
+            @include hover-focus {
+                &:after {
+                    opacity: 0.75;
+                }
+            }
+        }
+
+        // Handle colors
+        &.noui-slider-primary .noUi-handle {
+            background-color: theme-color("primary");
+            border-color: theme-color("primary");
+        }
+
+        &.noui-slider-danger .noUi-handle {
+            background-color: theme-color("danger");
+            border-color: theme-color("danger");
+        }
+
+        &.noui-slider-success .noUi-handle {
+            background-color: theme-color("success");
+            border-color: theme-color("success");
+        }
+
+        &.noui-slider-warning .noUi-handle {
+            background-color: theme-color("warning");
+            border-color: theme-color("warning");
+        }
+
+        &.noui-slider-info .noUi-handle {
+            background-color: theme-color("info");
+            border-color: theme-color("info");
+        }
+    }
+
+
+    //
     // Contextual colors
     //
 
@@ -317,36 +359,12 @@
         .noUi-connect {
             background-color: theme-color("primary");
         }
-
-        .noUi-handle {
-            &,
-            &:after {
-                background-color: theme-color("primary");
-            }
-
-            &:focus,
-            &:active {
-                box-shadow: 0 0 0 0.625rem rgba(theme-color("primary"), 0.1);
-            }
-        }
     }
 
     // Danger
     .noui-slider-danger {
         .noUi-connect {
             background-color: theme-color("danger");
-        }
-
-        .noUi-handle {
-            &,
-            &:after {
-                background-color: theme-color("danger");
-            }
-
-            &:focus,
-            &:active {
-                box-shadow: 0 0 0 0.625rem rgba(theme-color("danger"), 0.1);
-            }
         }
     }
 
@@ -355,18 +373,6 @@
         .noUi-connect {
             background-color: theme-color("success");
         }
-
-        .noUi-handle {
-            &,
-            &:after {
-                background-color: theme-color("success");
-            }
-
-            &:focus,
-            &:active {
-                box-shadow: 0 0 0 0.625rem rgba(theme-color("success"), 0.1);
-            }
-        }
     }
 
     // Warning
@@ -374,72 +380,12 @@
         .noUi-connect {
             background-color: theme-color("warning");
         }
-
-        .noUi-handle {
-            &,
-            &:after {
-                background-color: theme-color("warning");
-            }
-
-            &:focus,
-            &:active {
-                box-shadow: 0 0 0 0.625rem rgba(theme-color("warning"), 0.1);
-            }
-        }
     }
 
     // Info
     .noui-slider-info {
         .noUi-connect {
             background-color: theme-color("info");
-        }
-
-        .noUi-handle {
-            &,
-            &:after {
-                background-color: theme-color("info");
-            }
-
-            &:focus,
-            &:active {
-                box-shadow: 0 0 0 0.625rem rgba(theme-color("info"), 0.1);
-            }
-        }
-    }
-
-
-    //
-    // Slider handle with white inner circle
-    //
-
-    .noui-slider-circle {
-        .noUi-handle {
-            &:after {
-                background-color: $white;
-            }
-        }
-    }
-
-
-    //
-    // White handle
-    //
-
-    .noui-slider-white {
-        .noUi-handle {
-            background-color: $white;
-            box-shadow: $shadow-depth1;
-
-            // Hide inner circle
-            &:after {
-                content: none;
-            }
-
-            // Active state
-            &:focus,
-            &:active {
-                box-shadow: 0 0 0 0.625rem rgba($slider-handle-bg, 0.1), $shadow-depth1;
-            }
         }
     }
 
@@ -470,7 +416,7 @@
             left: 50%;
             bottom: -($tooltip-arrow-height * 2);
             transform: translate3d(-50%, 0, 0);
-            //@include size(0);
+            @include size(0);
         }
 
         // Show tooltip on hover

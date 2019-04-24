@@ -167,7 +167,7 @@
             bottom: -($tooltip-arrow-height * 2);
             left: 50%;
             margin-left: -($tooltip-arrow-height);
-            //@include size(0);
+            @include size(0);
         }
     }
 }

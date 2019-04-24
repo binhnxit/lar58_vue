@@ -1,5 +1,5 @@
 <template>
-    <div class="sidebar sidebar-light sidebar-main sidebar-expand-md sidebar-fixed">
+    <div class="sidebar sidebar-dark sidebar-main sidebar-expand-md sidebar-fixed">
 
         <!-- Sidebar mobile toggler -->
         <div class="sidebar-mobile-toggler text-center">
@@ -19,58 +19,25 @@
         <div class="sidebar-content">
 
             <!-- User menu -->
-            <div class="sidebar-user-material">
-                <div class="sidebar-user-material-body">
-                    <div class="card-body text-center">
-                        <a href="#">
-                            <img src="../../img/themes/placeholders/placeholder.jpg"
-                                 class="img-fluid rounded-circle shadow-1 mb-3" width="80" height="80" alt="">
-                        </a>
-                        <h6 class="mb-0 text-white text-shadow-dark">{{authInfo.name}}</h6>
-                        <!--<span class="font-size-sm text-white text-shadow-dark">Santa Ana, CA</span>-->
-                    </div>
+            <div class="sidebar-user">
+                <div class="card-body">
+                    <div class="media">
+                        <div class="mr-3">
+                            <a href="#"><img src="../../img/themes/placeholders/placeholder.jpg" width="38" height="38"
+                                             class="rounded-circle" alt=""></a>
+                        </div>
 
-                    <div class="sidebar-user-material-footer">
-                        <a href="#user-nav"
-                           class="d-flex justify-content-between align-items-center text-shadow-dark dropdown-toggle"
-                           data-toggle="collapse"><span>{{$t('nav.my_account')}}</span></a>
-                    </div>
-                </div>
+                        <div class="media-body">
+                            <div class="media-title font-weight-semibold">{{authInfo.name}}</div>
+                            <!--<div class="font-size-xs opacity-50">-->
+                                <!--<i class="icon-pin font-size-sm"></i> &nbsp;Santa Ana, CA-->
+                            <!--</div>-->
+                        </div>
 
-                <div class="collapse" id="user-nav">
-                    <ul class="nav nav-sidebar">
-                        <!--<li class="nav-item">-->
-                        <!--<a href="#" class="nav-link">-->
-                        <!--<i class="icon-user-plus"></i>-->
-                        <!--<span>My profile</span>-->
-                        <!--</a>-->
-                        <!--</li>-->
-                        <!--<li class="nav-item">-->
-                        <!--<a href="#" class="nav-link">-->
-                        <!--<i class="icon-coins"></i>-->
-                        <!--<span>My balance</span>-->
-                        <!--</a>-->
-                        <!--</li>-->
-                        <!--<li class="nav-item">-->
-                        <!--<a href="#" class="nav-link">-->
-                        <!--<i class="icon-comment-discussion"></i>-->
-                        <!--<span>Messages</span>-->
-                        <!--<span class="badge bg-teal-400 badge-pill align-self-center ml-auto">58</span>-->
-                        <!--</a>-->
-                        <!--</li>-->
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="icon-cog5"></i>
-                                <span>{{$t('nav.account_setting')}}</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="javascript:void(0)" class="nav-link" @click="onLogout">
-                                <i class="icon-switch2"></i>
-                                <span>{{$t('nav.logout')}}</span>
-                            </a>
-                        </li>
-                    </ul>
+                        <!--<div class="ml-3 align-self-center">-->
+                            <!--<a href="#" class="text-white"><i class="icon-cog3"></i></a>-->
+                        <!--</div>-->
+                    </div>
                 </div>
             </div>
             <!-- /user menu -->

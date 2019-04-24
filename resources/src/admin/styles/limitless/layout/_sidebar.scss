@@ -52,7 +52,7 @@
 .sidebar:not(.sidebar-component) {
 	.sidebar-content {
 		position: fixed;
-		top: $nav-link-height;
+		top: $nav-link-height + rem-calc($navbar-border-width * 2);
 		bottom: 0;
 		width: inherit;
 		overflow-y: scroll;
@@ -61,12 +61,12 @@
 
 		// If first navbar is large, make sure top spacing is calculated properly
 		.navbar-lg:first-child ~ .page-content & {
-			top: $nav-link-height-lg;
+			top: $nav-link-height-lg + rem-calc($navbar-border-width * 2);
 		}
 
 		// If first navbar is small, make sure top spacing is calculated properly
 		.navbar-sm:first-child ~ .page-content & {
-			top: $nav-link-height-sm;
+			top: $nav-link-height-sm + rem-calc($navbar-border-width * 2);
 		}
 	}
 }
@@ -411,6 +411,8 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+    border-top: $navbar-border-width solid transparent;
+    border-bottom: $navbar-border-width solid transparent;
 
     // Links
 	a {
@@ -668,8 +670,19 @@
 .sidebar-component {
 	display: none;
 	width: 100%;
+	border: 1px solid transparent;
 	@include border-radius($border-radius);
 	@include box-shadow($card-box-shadow);
+
+	// Dark colors
+	&.sidebar-dark {
+		border-color: $sidebar-dark-border-color;
+	}
+
+	// Light colors
+	&.sidebar-light {
+		border-color: $sidebar-light-border-color;
+	}
 }
 
 
@@ -842,6 +855,33 @@
 				}
 			}
 
+			// Sidebar user block
+			.sidebar-user {
+
+				// Remove horizontal padding
+				.card-body {
+					padding-left: 0;
+					padding-right: 0;
+				}
+
+				// Center image
+				.media {
+					justify-content: center;
+
+					// Hide all text
+					> div {
+						&:not(:first-child) {
+							display: none!important;
+
+						}
+
+						&:first-child {
+							margin: 0!important;
+						}
+					}
+				}
+			}
+
 			// Flip 2nd level dropdown if there's no enough space
 			// and height doesn't fit the browser window
 			.nav-item-submenu-reversed {
@@ -992,7 +1032,7 @@
 				&.sidebar-component {
 					z-index: $sidebar-zindex-component;
 				}
-
+				
 				// All except content sidebar
 				&:not(.sidebar-component) {
 					position: static;
@@ -1224,9 +1264,6 @@
 //
 
 .row-tile {
-	@include border-radius($btn-border-radius);
-	@include box-shadow($card-box-shadow);
-
 	div[class*=col] {
 
 		//
@@ -1235,13 +1272,7 @@
 
 		// Remove rounded corners from all buttons
 		.btn {
-			border-width: 0;
 			@include border-radius(0);
-		}
-
-		.btn-light,
-		.bg-white {
-			border-color: $card-border-color;
 		}
 
 		// Keep left rounded corners for the first and last buttons only
@@ -1282,101 +1313,13 @@
 
 		// Remove top borders
 		.btn + .btn {
-			border-top-width: $btn-border-width;
+			border-top: 0;
 		}
 
 		// Remove left borders
 		+ div[class*=col] {
 			.btn {
-				border-left-width: $btn-border-width;
-			}
-		}
-	}
-}
-
-
-//
-// User menu
-//
-
-// Base
-.sidebar-user-material {
-
-	// Add backgroupd image    
-    .sidebar-user-material-body {
-		background: url(/images/themes/backgrounds/user_bg3.jpg) center center no-repeat;
-	    background-size: cover;
-    }
-        
-    // Navigation menu wrapper
-	.collapse {
-		
-    	.sidebar-dark & {
-			background-color: $sidebar-dark-user-menu-bg;
-			border-bottom: $sidebar-dark-user-menu-border-width solid $sidebar-dark-user-menu-border-color;
-    	}
-
-
-		// In default sidebar
-    	.sidebar-light & {
-    		background-color: $sidebar-light-user-menu-bg;
-			border-bottom: $sidebar-light-user-menu-border-width solid $sidebar-light-user-menu-border-color;
-    	}
-	}
-}
-
-// User menu
-.sidebar-user-material-footer {
-	
-	// Link
-	> a {
-    	padding: $nav-link-padding-y $nav-link-padding-x;
-    	display: block;
-		color: $white;
-		background-color: rgba($black, 0.15);
-		@include transition(background-color ease-in-out $component-transition-timer);
-		
-		// Hover effect
-		&:hover,
-		&[aria-expanded="true"] {
-			background-color: rgba(#000, 0.25);
-		}
-
-		&:after {
-			@include transition(all ease-in-out $component-transition-timer);
-		}
-					
-		// Rotate caret
-		&[aria-expanded="true"]:after {
-			transform: rotate(180deg);
-		}
-	}    	
-}
-
-// Inside mini sidebar
-.sidebar-xs {
-	@include media-breakpoint-up(md) {
-
-		// Hide text
-		.sidebar-user-material-body > .card-body {
-			display: none;
-		}
-
-		// Menu button
-		.sidebar-user-material-footer {
-
-			// Link
-			> a {
-				padding: (($sidebar-mini-width - $icon-font-size) / 2);
-
-				&:after {
-					margin: auto;
-				}
-			}
-
-			// Hide text
-			> a > span {
-				display: none;
+				border-left: 0;
 			}
 		}
 	}

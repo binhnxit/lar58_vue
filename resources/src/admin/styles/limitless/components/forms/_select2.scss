@@ -33,28 +33,45 @@
         line-height: $input-line-height;
         color: $input-color;
         position: relative;
-        border-top: $input-border-width solid transparent;
-        border-bottom: $input-border-width solid $input-border-color;
+        border: $input-border-width solid transparent;
         white-space: nowrap;
         user-select: none;
+        @include border-radius($input-border-radius);
         @include transition(all ease-in-out $component-transition-timer);
 
-        // Focus and active states
+        // Darken on hover
+        &:hover,
         &:focus,
         .select2-container--open & {
-            border-bottom-color: $input-focus-border-color;
-            box-shadow: $input-focus-box-shadow;
+            box-shadow: $hover-shadow-lighter;
         }
 
-        // Use data-container-css-class="text-white" to adapt menu to dark backgrounds
-        &.text-white {
-            border-bottom-color: $input-light-border-color;
+        // Allow custom background color
+        &:not([class*=bg-]) {
+            background-color: $input-bg;
 
-            // Focus and active states
+            // Allow custom border color
+            &:not([class*=border-]) {
+                border-color: $input-border-color;
+            }
+        }
+
+        // Apply darker hover color
+        &[class*=bg-] {
+            &:hover,
             &:focus,
             .select2-container--open & {
-                border-bottom-color: $input-light-border-active-color;
-                box-shadow: 0 $input-border-width 0 $input-light-border-active-color;
+                box-shadow: $hover-shadow-darker;
+            }
+
+            // Placeholder
+            .select2-selection__placeholder {
+                color: $white;
+
+                // In disabled mode
+                .select2-container--disabled & {
+                    color: rgba($white, 0.75);
+                }
             }
         }
 
@@ -82,7 +99,6 @@
             line-height: 1;
             margin-top: (($line-height-computed - $icon-font-size) / 2);
             margin-left: $element-spacer-x;
-            margin-right: $element-spacer-x;
             opacity: 0.75;
             @include transition(opacity ease-in-out $component-transition-timer);
 
@@ -134,12 +150,17 @@
         .select2-container--disabled & {
             cursor: $cursor-disabled;
             box-shadow: none;
-            border-bottom-style: dashed;
-            color: $input-disabled-color;
 
-            // In disabled state bottom border should not change
-            &:focus {
-                border-bottom-color: $input-border-color;
+            // Disabled state for container
+            &:not([class*=bg-]) {
+                color: $input-disabled-color;
+                background-color: $input-disabled-bg;
+            }
+
+            // Disabled state for custom colored container
+            &[class*=bg-] {
+                opacity: $select2-custom-disabled-opacity;
+                box-shadow: none;
             }
 
             // Hide clear button
@@ -155,17 +176,19 @@
 
     .select2-selection--multiple {
         display: block;
+        border: $input-border-width solid transparent;
         cursor: text;
         outline: 0;
         user-select: none;
+        @include border-radius($input-border-radius);
 
-        // Use data-container-css-class="text-white" to adapt menu to dark backgrounds
-        &.text-white {
-            .select2-selection__choice {
-                @include plain-hover-focus {
-                    background-color: $white;
-                    color: $body-color;
-                }
+        // Allow custom background color
+        &:not([class*=bg-]) {
+            background-color: $input-bg;
+
+            // Allow custom border color
+            &:not([class*=border-]) {
+                border-color: $input-border-color;
             }
         }
 
@@ -176,7 +199,7 @@
             white-space: nowrap;
             list-style: none;
             margin: 0;
-            padding: 0;
+            padding: 0 $select2-pills-spacer $select2-pills-spacer $select2-pills-spacer;
             width: 100%;
         }
 
@@ -187,6 +210,23 @@
 
         // Disabled multiselect
         .select2-container--disabled & {
+
+            // Disabled state for container
+            &:not([class*=bg-]) {
+                background-color: $input-disabled-bg;
+            }
+
+            // Disabled state for custom colored container
+            &[class*=bg-] {
+                opacity: $select2-custom-disabled-opacity;
+                box-shadow: none;
+
+                .select2-selection__choice {
+                    opacity: 1;
+                }
+            }
+
+            // Apply disabled cursor for all elements
             &,
             .select2-selection__choice,
             .select2-search__field {
@@ -200,10 +240,9 @@
             color: $select2-pills-color;
             cursor: default;
             float: left;
-            margin-right: $element-spacer-x;
+            margin-right: $select2-pills-spacer;
             margin-top: $select2-pills-spacer;
-            margin-bottom: $select2-pills-spacer;
-            padding: $input-padding-y $input-btn-padding-x;
+            padding: ($input-padding-y - $select2-pills-spacer) $input-btn-padding-x;
             @include border-radius($select2-pills-border-radius);
             @include transition(color ease-in-out $component-transition-timer, background-color ease-in-out $component-transition-timer);
 
@@ -260,12 +299,12 @@
             .select2-search__field {
                 font-size: 100%;
                 margin-top: $select2-pills-spacer;
-                margin-bottom: $select2-pills-spacer;
-                padding: $input-padding-y 0;
+                padding: ($input-padding-y - $select2-pills-spacer) 0;
                 background-color: transparent;
                 border-width: 0;
                 outline: 0;
                 color: inherit;
+                margin-left: ($select2-pills-spacer * 2);
                 -webkit-appearance: textfield;
 
                 // Cancel button
@@ -277,6 +316,7 @@
             // Remove left spacing if no pills
             &:first-child .select2-search__field {
                 margin-left: 0;
+                padding-left: $input-padding-x - $select2-pills-spacer;
             }
         }
     }
@@ -447,9 +487,38 @@
             left: 0;
         }
 
+        // If opened above
+        .select2-dropdown--above {
+            border-bottom: 0;
+            @include border-bottom-radius(0);
+
+            // Add border for colored menu
+            &[class*=bg-] {
+                border-bottom: $dropdown-border-width solid rgba($white, 0.2);
+            }
+        }
+        &.select2-container--above {
+            .select2-selection--single,
+            .select2-selection--multiple {
+                @include border-top-radius(0);
+            }
+        }
+
         // If opened below
         .select2-dropdown--below {
-            margin-top: $input-border-width;
+            border-top: none;
+            @include border-top-radius(0);
+
+            // Add border for colored menu
+            &[class*=bg-] {
+                border-top: $dropdown-border-width solid rgba($white, 0.2);
+            }
+        }
+        &.select2-container--below {
+            .select2-selection--single,
+            .select2-selection--multiple {
+                @include border-bottom-radius(0);
+            }
         }
     }
 
@@ -487,12 +556,11 @@
         // Search field
         .select2-search__field {
             padding: $input-padding-y $input-padding-x;
-            padding-left: ($input-padding-x + $dropdown-item-padding-x + $font-size-base);
-            border: $input-border-width solid transparent;
-            border-width: $input-border-width 0;
-            border-bottom-color: $input-border-color;
+            padding-left: ($input-padding-x * 2) + $font-size-base;
+            border: $input-border-width solid $input-border-color;
             outline: 0;
             width: 100%;
+            @include border-radius($input-border-radius);
 
             // Cancel button
             &::-webkit-search-cancel-button {
@@ -532,13 +600,13 @@
         // Multiple
         &.select2-selection--multiple {
             .select2-selection__choice {
-                padding: $input-padding-y-lg $input-btn-padding-x-lg;
+                padding: ($input-padding-y-lg - $select2-pills-spacer) $input-btn-padding-x-lg;
                 font-size: $font-size-lg;
                 line-height: $input-line-height-lg;
             }
 
             .select2-search--inline .select2-search__field {
-                padding: $input-padding-y-lg 0;
+                padding: ($input-padding-y-lg - $select2-pills-spacer) 0;
                 font-size: $font-size-lg;
                 line-height: $input-line-height-lg;
             }
@@ -567,13 +635,13 @@
         // Multiple
         &.select2-selection--multiple {
             .select2-selection__choice {
-                padding: $input-padding-y-sm $input-btn-padding-x-sm;
+                padding: ($input-padding-y-sm - $select2-pills-spacer) $input-btn-padding-x-sm;
                 font-size: $font-size-sm;
                 line-height: $input-line-height-sm;
             }
 
             .select2-search--inline .select2-search__field {
-                padding: $input-padding-y-sm 0;
+                padding: ($input-padding-y-sm - $select2-pills-spacer) 0;
                 font-size: $font-size-sm;
                 line-height: $input-line-height-sm;
             }
@@ -584,13 +652,21 @@
     // Custom colors
     // ------------------------------
 
+    // Multiple selection choices
+    .select2-selection--multiple[class*=bg-] {
+        .select2-selection__choice {
+            background-color: $dropdown-dark-active-bg;
+        }
+    }
+
+
     // Dropdown menu
     .select2-dropdown[class*=bg-] {
         
         // Search field
         .select2-search--dropdown .select2-search__field {
-            background-color: transparent;
-            border-bottom-color: $input-light-border-color;
+            background-color: $dropdown-dark-active-bg;
+            border-color: transparent;
             color: $white;
         }
 

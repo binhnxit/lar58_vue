@@ -42,7 +42,6 @@ $hover-shadow-darker:                     0 0 0 62.5rem rgba($black, 0.04) inset
 
 // Images
 $img-path:                                '/admin/img/themes' !default;
-$style-path:                                '/admin/styles/limitless' !default;
 $img-preview-max-height:                  5rem !default;
 
 // Wrappers for element spacers. Uses default $spacers map
@@ -110,6 +109,7 @@ $cursor-disabled:                         default !default;
 //
 // Includes page header base, colors and page title
 
+$page-header-border-width:                   $border-width !default;
 $page-header-elements-border-width:          $border-width !default;
 
 $page-header-padding-y:                      2rem !default;
@@ -154,7 +154,7 @@ $sidebar-mini-width:                     ($spacer * 2) + $icon-font-size !defaul
 // Light sidebar
 $sidebar-light-bg:                       $white !default;
 $sidebar-light-color:                    $body-color !default;
-$sidebar-light-border-width:             0 !default;
+$sidebar-light-border-width:             $border-width !default;
 $sidebar-light-border-color:             rgba($black, 0.125) !default;
 $sidebar-light-toggler-bg:               darken($sidebar-light-bg, 4%) !default;
 $sidebar-light-toggler-color:            rgba($sidebar-light-color, 0.8) !default;
@@ -162,10 +162,6 @@ $sidebar-light-toggler-hover-bg:         transparent !default;
 $sidebar-light-toggler-hover-color:      $sidebar-light-color !default;
 $sidebar-light-tabs-bg:                  darken($sidebar-light-bg, 4%) !default;
 $sidebar-light-xs-menu-bg:               darken($sidebar-light-bg, 1%) !default;
-
-$sidebar-light-user-menu-bg:             transparent !default;
-$sidebar-light-user-menu-border-width:   $border-width !default;
-$sidebar-light-user-menu-border-color:   $border-color !default;
 
 
 // Dark sidebar
@@ -180,16 +176,12 @@ $sidebar-dark-toggler-hover-color:       $sidebar-dark-color !default;
 $sidebar-dark-tabs-bg:                   darken($sidebar-dark-bg, 4%) !default;
 $sidebar-dark-xs-menu-bg:                lighten($sidebar-dark-bg, 5%) !default;
 
-$sidebar-dark-user-menu-bg:              transparent !default;
-$sidebar-dark-user-menu-border-width:    $border-width !default;
-$sidebar-dark-user-menu-border-color:    rgba($white, 0.1) !default;
-
 
 // Shadows [material only]
-$sidebar-left-desktop-box-shadow:        $shadow-depth1 !default;
+$sidebar-left-desktop-box-shadow:        none !default;
 $sidebar-left-mobile-box-shadow:         0.25rem 0 1rem rgba(0, 0, 0, 0.35) !default;
 
-$sidebar-right-desktop-box-shadow:       $shadow-depth1 !default;
+$sidebar-right-desktop-box-shadow:       none !default;
 $sidebar-right-mobile-box-shadow:        -0.25rem 0 1rem rgba(0, 0, 0, 0.35) !default;
 
 
@@ -243,7 +235,7 @@ $navigation-light-sub-bg:                   transparent !default;
 $navigation-light-sub-active-bg:            $gray-200 !default;
 $navigation-light-sub-active-color:         $body-color !default;
 $navigation-light-bordered-border-width:    $border-width !default;
-$navigation-light-bordered-border-color:    $gray-400 !default;
+$navigation-light-bordered-border-color:    $gray-300 !default;
 $navigation-light-bordered-header-bg:       $gray-100 !default;
 
 
@@ -286,12 +278,12 @@ $select2-max-height:                 280px !default;
 $select2-disabled-opacity:           0.6 !default;
 $select2-custom-disabled-opacity:    0.75 !default;
 
-$select2-pills-spacer:               0.0625rem !default;
-$select2-pills-bg:                   $gray-300 !default;
-$select2-pills-color:                $body-color !default;
-$select2-pills-hover-bg:             $color-blue-500 !default;
-$select2-pills-hover-color:          $white !default;
-$select2-pills-border-radius:        $border-radius-round !default;
+$select2-pills-spacer:               0.125rem !default;
+$select2-pills-bg:                   $color-slate-700 !default;
+$select2-pills-color:                $white !default;
+$select2-pills-hover-bg:             $select2-pills-bg !default;
+$select2-pills-hover-color:          $select2-pills-color !default;
+$select2-pills-border-radius:        $border-radius !default;
 
 $select2-light-results-color:        $gray-600 !default;
 $select2-dark-results-color:         rgba($white, 0.75) !default;
@@ -309,13 +301,13 @@ $typeahead-max-height-scrollable:    250px !default;
 
 
 // Tag inputs
-$tags-spacer:                        0.0625rem !default;
+$tags-spacer:                        0.125rem !default;
 $tags-color:                         $body-color !default;
 $tags-hover-color:                   $white !default;
 $tags-bg:                            $gray-300 !default;
 $tags-hover-bg:                      $color-blue-500 !default;
 $tag-disabled-opacity:               0.5 !default;
-$tag-border-radius:                  $border-radius-round !default;
+$tag-border-radius:                  $border-radius !default;
 
 
 // Form wizard
@@ -359,7 +351,7 @@ $trumbowyg-toolbar-hover-bg:         $gray-300 !default;
 $trumbowyg-toolbar-color:            $body-color !default;
 $trumbowyg-toolbar-border-width:     $border-width !default;
 $trumbowyg-toolbar-border-color:     $border-color !default;
-$trumbowyg-toolbar-divider-width:    0 !default;
+$trumbowyg-toolbar-divider-width:    1px !default;
 $trumbowyg-toolbar-height:           ($btn-padding-x * 2) + $icon-font-size + rem-calc($trumbowyg-toolbar-border-width * 2) !default;
 
 
@@ -430,7 +422,7 @@ $spectrum-choose-btn-color:         $white !default;
 
 // Plupload uploader
 $plupload-max-height:                       250px !default;
-$plupload-bg:                               $white !default;
+$plupload-bg:                               #fcfcfc !default;
 $plupload-border-width:                     ($border-width * 2) !default;
 $plupload-border-style:                     dashed !default;
 $plupload-border-color:                     $gray-400 !default;
@@ -489,7 +481,7 @@ $dropzone-preview-width:                    10rem !default;
 $notification-width:                   20rem !default;
 $notification-gutter-y:                $spacer !default;
 $notification-gutter-x:                $content-container-padding-x !default;
-$notification-box-shadow:              $shadow-depth1 !default;
+$notification-box-shadow:              $dropdown-box-shadow !default;
 
 
 // Noty.js
@@ -632,21 +624,21 @@ $fullcalendar-weekday-color:           rgba($body-color, 0.5) !default;
 
 // Sliders (shared styles)
 $slider-bg:                            $gray-300 !default;
-$slider-connect-bg:                    $color-indigo-400 !default;
+$slider-connect-bg:                    $color-slate-500 !default;
 $slider-disabled-opacity:              0.75 !default;
 $slider-box-shadow:                    inset 0 1px 1px rgba($black, 0.1) !default;
 
-$slider-height:                        0.3125rem !default;
+$slider-height:                        0.375rem !default;
 $slider-height-lg:                     ($slider-height + 0.125rem) !default;
 $slider-height-sm:                     ($slider-height - 0.125rem) !default;
 $slider-vertical-height:               10rem !default;
 
-$slider-handle-bg:                     $slider-connect-bg !default;
-$slider-handle-inner-bg:               $slider-connect-bg !default;
+$slider-handle-bg:                     $white !default;
+$slider-handle-inner-bg:               $gray-900 !default;
 $slider-handle-border-width:           $border-width !default;
-$slider-handle-border-color:           transparent !default;
-$slider-handle-hover-bg:               $slider-handle-bg !default;
-$slider-handle-inner-hover-bg:         $slider-handle-hover-bg !default;
+$slider-handle-border-color:           $gray-500 !default;
+$slider-handle-hover-bg:               $gray-100 !default;
+$slider-handle-inner-hover-bg:         $gray-800 !default;
 
 $slider-pips-color:                    $gray-700 !default;
 $slider-pips-spacer-y:                 1rem !default;
@@ -700,22 +692,22 @@ $fancytree-node-active-color:          $white !default;
 //
 
 // Timelines
-$timeline-icon-size: 				  3rem !default;
-$timeline-line-width: 				  ($border-width * 2) !default;
-$timeline-line-color: 				  $gray-500 !default;
-$timeline-icon-bg:					  $card-bg !default;
-$timeline-icon-border-width: 		  ($timeline-line-width * 2) !default;
-$timeline-content-padding-x:		  $content-container-padding-x !default;
+$timeline-icon-size: 				          3rem !default;
+$timeline-line-width: 				        ($border-width * 2) !default;
+$timeline-line-color: 				        $gray-500 !default;
+$timeline-icon-bg:					          $card-bg !default;
+$timeline-icon-border-width: 		      ($timeline-line-width * 2) !default;
+$timeline-content-padding-x:		      $content-container-padding-x !default;
 
 
 // Feeds
-$list-feed-circle-radius: 			  0.5rem !default; // must be equal to even px value
-$list-feed-circle-border-width: 	  ($border-width * 2) !default;
-$list-feed-circle-border-color:		  $color-slate-500 !default;
-$list-feed-circle-position: 		  ($line-height-computed - ($list-feed-circle-radius + rem-calc($list-feed-circle-border-width))) / 2 !default;
+$list-feed-circle-radius: 			      0.5rem !default; // must be equal to even px value
+$list-feed-circle-border-width: 	    ($border-width * 2) !default;
+$list-feed-circle-border-color:		    $color-slate-500 !default;
+$list-feed-circle-position: 		      ($line-height-computed - ($list-feed-circle-radius + rem-calc($list-feed-circle-border-width))) / 2 !default;
 
-$list-feed-item-padding-y:			  1.25rem !default;
-$list-feed-item-padding-x:			  ($card-spacer-x + $list-feed-circle-radius) !default;
+$list-feed-item-padding-y:			      1.25rem !default;
+$list-feed-item-padding-x:			      ($card-spacer-x + $list-feed-circle-radius) !default;
 
 
 // Blog

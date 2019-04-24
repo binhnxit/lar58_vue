@@ -31,7 +31,7 @@
 
             > iframe {
                 border: 0;
-                //@include size(100%);
+                @include size(100%);
             }
         }
     }
@@ -232,7 +232,7 @@
                 z-index: 10;
                 line-height: ($wizard-step-number-size - rem-calc($wizard-step-line-size * 2));
                 text-align: center;
-                //@include size($wizard-step-number-size);
+                @include size($wizard-step-number-size);
                 @include border-radius($border-radius-circle);
             }
         }

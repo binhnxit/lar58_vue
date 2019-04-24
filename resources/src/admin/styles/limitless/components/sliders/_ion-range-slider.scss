@@ -144,7 +144,7 @@
         top: $tooltip-arrow-height + ($tooltip-padding-y * 2) + $slider-pips-font-size + $slider-height;
         cursor: pointer;
         z-index: 1;
-        //@include size($slider-height * 3);
+        @include size($slider-height * 3);
         @include border-radius($border-radius-round);
 
         // Small circle
@@ -157,25 +157,14 @@
             margin-top: -($slider-height / 2);
             margin-left: -($slider-height / 2);
             background-color: $slider-handle-inner-bg;
-            //@include size($slider-height);
+            @include size($slider-height);
             @include border-radius($border-radius-round);
         }
 
         // Animate handle
         &,
         &:after {
-            @include transition(background-color ease-in-out $component-transition-timer, box-shadow ease-in-out $component-transition-timer, transform ease-in-out $component-transition-timer);
-        }
-
-        // Hover state
-        &:hover {
-            transform: scale(1.1);
-        }
-
-        // Active state
-        &:focus,
-        &:active {
-            box-shadow: 0 0 0 0.625rem rgba($slider-handle-bg, 0.1);
+            @include transition(background-color ease-in-out $component-transition-timer);
         }
 
         // Hover state
@@ -258,7 +247,7 @@
             overflow: hidden;
             border: $tooltip-arrow-height solid transparent;
             border-top-color: $tooltip-arrow-color;
-            //@include size(0);
+            @include size(0);
         }
     }
 

@@ -34,14 +34,6 @@
 		}
 	}
 
-	// Highlight input on focus
-	.file-caption {
-	    &:focus {
-			border-bottom-color: $input-focus-border-color;
-			box-shadow: $input-focus-box-shadow;
-	    }
-	}
-
 	// Caption name
 	.file-caption-name {
 	    display: inline-block;
@@ -70,14 +62,14 @@
 	    background-color: $color-danger-50;
 	    color: $color-danger-800;
 	    text-align: center;
-	    padding: $input-btn-padding-y $input-btn-padding-x;
+	    padding: $input-padding-y $input-padding-x;
 	    margin: $fileinput-preview-spacer;
 	    margin-top: 0;
 	    @include border-radius($border-radius);
 
 	    // Top spacing correction if inside drop zone
 	    .file-drop-zone & {
-	    	margin-top: $input-btn-padding-y;
+	    	margin-top: $input-padding-y;
 	    }
 
 	    // Close button
@@ -88,7 +80,7 @@
 		// List of errors
 		pre {
 			background-color: $card-bg;
-		    margin-top: $input-btn-padding-y;
+		    margin-top: $input-padding-y;
 		    text-align: left;
 		}
 
@@ -102,14 +94,8 @@
 
 	// Disabled caption
 	.file-caption-disabled {
+	    background-color: $input-disabled-bg;
 	    cursor: $cursor-disabled;
-	    border-bottom-style: dashed;
-
-	    // Focus state
-	    &:focus {
-	    	border-bottom-color: $input-border-color;
-	    	box-shadow: none;
-	    }
 	}
 
 
@@ -228,7 +214,7 @@
 		border-top: $border-width solid $border-color;
 		font-size: $font-size-sm;
 		line-height: $line-height-sm;
-		padding: $input-btn-padding-y $input-btn-padding-x;
+		padding: $input-padding-y $input-padding-x;
 		z-index: $zindex-tooltip;
 		@include border-bottom-radius($border-radius);
 
@@ -247,7 +233,7 @@
 
 	// Give it minimum height
 	.file-thumb-loading {
-		min-height: ($icon-font-size * 2) + ($spacer * 2) + (($input-btn-padding-y * 2) + $line-height-computed);
+		min-height: ($icon-font-size * 2) + ($spacer * 2) + (($input-padding-y * 2) + $line-height-computed);
 	}
 
 	// Loading icon
@@ -263,9 +249,9 @@
 			top: 50%;
 			left: 50%;
 			z-index: $zindex-tooltip - 1;
-			margin-top: -((($icon-font-size * 2) + (($input-btn-padding-y * 2) + $line-height-computed)) / 2);
+			margin-top: -((($icon-font-size * 2) + (($input-padding-y * 2) + $line-height-computed)) / 2);
 			margin-left: -($icon-font-size);
-			//@include size($icon-font-size * 2);
+			@include size($icon-font-size * 2);
 			@include border-radius($border-radius);
 		}
 
@@ -278,7 +264,7 @@
 			color: $white;
 			top: 50%;
 			left: 50%;
-			margin-top: -(($icon-font-size + (($input-btn-padding-y * 2) + $line-height-computed)) / 2);
+			margin-top: -(($icon-font-size + (($input-padding-y * 2) + $line-height-computed)) / 2);
 			margin-left: -($icon-font-size / 2);
 			font-size: $icon-font-size;
 			line-height: 1;

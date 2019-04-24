@@ -15,7 +15,7 @@
         -webkit-backface-visibility: hidden;
         transform: translate(0, 0) scale(1.0, 1.0);
         -webkit-font-smoothing: subpixel-antialiased;
-        box-shadow: $notification-box-shadow;
+        @include box-shadow($notification-box-shadow);
     }
 
     // Body

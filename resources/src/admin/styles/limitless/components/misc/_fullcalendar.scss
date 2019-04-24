@@ -179,8 +179,6 @@
 		padding: $btn-padding-y $btn-padding-x;
 		white-space: nowrap;
 		cursor: pointer;
-		font-weight: $btn-font-weight;
-		text-transform: uppercase;
 		@include transition(all ease-in-out $component-transition-timer);
 
 		// Focus state
@@ -529,7 +527,7 @@
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%, -50%);
-			//@include size(($fullcalendar-event-padding-y * 2) + $line-height-computed);
+			@include size(($fullcalendar-event-padding-y * 2) + $line-height-computed);
 		}
 
 
@@ -598,7 +596,7 @@
 			top: 50%;
 			transform: translateY(-50%);
 			@include border-radius($border-radius-circle);
-			//@include size($fullcalendar-event-resizer-size-h);
+			@include size($fullcalendar-event-resizer-size-h);
 		}
 	}
 
@@ -1260,7 +1258,7 @@
 			bottom: 0;
 			margin-bottom: calc(-#{$fullcalendar-event-resizer-size-h / 2} - #{$fullcalendar-event-border-width});
 			transform: translateX(-50%);
-			//@include size($fullcalendar-event-resizer-size-v);
+			@include size($fullcalendar-event-resizer-size-v);
 			@include border-radius($border-radius-circle);
 		}
 	}
@@ -1295,7 +1293,7 @@
 	// Event dot
 	.fc-event-dot {
 		display: inline-block;
-		//@include size($badge-mark-size);
+		@include size($badge-mark-size);
 		@include border-radius($border-radius-circle);
 	}
 
@@ -1400,7 +1398,7 @@
 	}
 	.fc-list-empty-wrap1 {
 		display: table;
-		//@include size(100%);
+		@include size(100%);
 	}
 	.fc-list-empty {
 		display: table-cell;

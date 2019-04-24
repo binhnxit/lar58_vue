@@ -85,10 +85,9 @@
 
 	// Buttons base
 	.plupload_button { 
-		display: inline-flex;
+		display: inline-block;
 		border: $btn-border-width solid transparent;
 		font-weight: $btn-font-weight;
-		text-transform: uppercase;
 		@include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-line-height, $btn-border-radius);
 		@include transition($btn-transition);
 
@@ -128,7 +127,6 @@
 	a.plupload_disabled {
 		cursor: default;
 		opacity: $btn-disabled-opacity;
-		pointer-events: none;
 
 		// Hover state
 		@include hover {		

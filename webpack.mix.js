@@ -37,4 +37,6 @@ mix.js('resources/src/admin/main-login.js', 'public/js/app-admin-login.js')
   ]
 })
 
-mix.copy('resources/src/admin/img', 'public/images')
+if (mix.inProduction()) {
+  mix.version()
+}
