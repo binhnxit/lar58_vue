@@ -8,12 +8,12 @@ export default {
       .then(res => {
         if (res.data.status) {
           commit('RECEIVE_USER', res.data.data)
-          success('Created user successfully!!')
+          success(t('msg.created_success'))
           router.push('/users')
         }
       }).catch(err => {
         console.log(err)
-        error('Error happen!!!')
+        error(t('msg.error_happen'))
     })
   },
   getListUsers({commit}) {

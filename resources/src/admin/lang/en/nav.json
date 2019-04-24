@@ -1,3 +1,9 @@
 {
-  "hello": "Hello"
+  "hello": "Hello",
+  "my_account": "My Account",
+  "account_setting": "Account settings",
+  "logout": "Logout",
+  "dashboard": "Dashboard",
+  "users": "Users",
+  "main": "Main"
 }

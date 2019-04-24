@@ -23,7 +23,7 @@
                 <div class="sidebar-user-material-body">
                     <div class="card-body text-center">
                         <a href="#">
-                            <img src="admin/img/themes/placeholders/placeholder.jpg"
+                            <img src="../../img/themes/placeholders/placeholder.jpg"
                                  class="img-fluid rounded-circle shadow-1 mb-3" width="80" height="80" alt="">
                         </a>
                         <h6 class="mb-0 text-white text-shadow-dark">{{authInfo.name}}</h6>
@@ -33,7 +33,7 @@
                     <div class="sidebar-user-material-footer">
                         <a href="#user-nav"
                            class="d-flex justify-content-between align-items-center text-shadow-dark dropdown-toggle"
-                           data-toggle="collapse"><span>My account</span></a>
+                           data-toggle="collapse"><span>{{$t('nav.my_account')}}</span></a>
                     </div>
                 </div>
 
@@ -61,13 +61,13 @@
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="icon-cog5"></i>
-                                <span>Account settings</span>
+                                <span>{{$t('nav.account_setting')}}</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="javascript:void(0)" class="nav-link" @click="onLogout">
                                 <i class="icon-switch2"></i>
-                                <span>Logout</span>
+                                <span>{{$t('nav.logout')}}</span>
                             </a>
                         </li>
                     </ul>
@@ -82,20 +82,20 @@
 
                     <!-- Main -->
                     <li class="nav-item-header">
-                        <div class="text-uppercase font-size-xs line-height-xs">Main</div>
+                        <div class="text-uppercase font-size-xs line-height-xs">{{$t('nav.main')}}</div>
                         <i class="icon-menu" title="Main"></i></li>
                     <li class="nav-item">
                         <router-link to="/dashboard" class="nav-link">
                             <i class="icon-home4"></i>
                             <span>
-                                Dashboard
+                                {{$t('nav.dashboard')}}
                                 <!--<span class="d-block font-weight-normal opacity-50">No active orders</span>-->
                             </span>
                         </router-link>
                     </li>
                     <li class="nav-item">
                         <router-link to="/users" class="nav-link">
-                            <i class="icon-users"></i> <span>Users</span>
+                            <i class="icon-users"></i> <span>{{$t('nav.users')}}</span>
                         </router-link>
                     </li>
 

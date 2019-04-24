@@ -3,7 +3,7 @@
         <div class="navbar-brand">
             <router-link to="/">
                 <a href="" class="d-inline-block">
-                    <img src="/images/themes/logo_light.png" alt="">
+                    <img src="../../img/themes/logo_light.png" alt="">
                 </a>
             </router-link>
 
@@ -191,7 +191,7 @@
                 <li class="nav-item">
                     <a href="javascript:void(0)" @click="onLogout" class="navbar-nav-link">
                         <i class="icon-switch2"></i>
-                        <span class="d-md-none ml-2">Logout</span>
+                        <span class="d-md-none ml-2">{{$t('nav.logout')}}</span>
                     </a>
                 </li>
             </ul>
