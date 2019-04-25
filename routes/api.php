@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix('admin/v1')->namespace('Admin')->name('admin.v1.')->group(function () {
+    require_once __DIR__ . '/admin_ver1.php';
 });
+

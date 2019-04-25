@@ -8,7 +8,7 @@
 
 namespace App\Services;
 
-use App\User;
+use App\Entities\User;
 
 class UserService
 {

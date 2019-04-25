@@ -6,8 +6,7 @@
  * Time: 5:04 PM
  */
 
-Route::get('/login', 'AuthController@getLogin')->name('admin.login');
-Route::post('/api/login', 'AuthController@login')->name('api.admin.login');
+Route::post('/login', 'AuthController@login')->name('login');
 Route::middleware('auth.admin')->group(function () {
 
     Route::prefix('api')->group(function () {
@@ -23,5 +22,3 @@ Route::middleware('auth.admin')->group(function () {
 
 });
 
-// Catch all route...
-Route::get('/{view?}', 'DashboardController@index')->where('view', '(.*)')->name('admin.dashboard.index');
