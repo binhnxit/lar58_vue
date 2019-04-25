@@ -39,6 +39,7 @@ const router = new VueRouter({
 
 router.beforeResolve((to, from, next) => {
   // If this isn't an initial page load.
+  console.log('authenticated = ', store.state.app.authenticated, to.matched.some(record => record.meta.requiredLogin))
   if (to.matched.some(record => record.meta.requiredLogin) && store.state.app.authenticated === false) {
     next('/login')
   }

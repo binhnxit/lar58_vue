@@ -156,7 +156,7 @@
                 <li class="nav-item dropdown dropdown-user">
                     <a href="#" class="navbar-nav-link dropdown-toggle" data-toggle="dropdown">
                         <img :src="defaultUserImg" class="rounded-circle" alt="">
-                        <span>{{authInfo.name}}</span>
+                        <span>{{fullname}}</span>
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right">
@@ -179,9 +179,16 @@
 
   export default {
     name: "core-navbar",
+    data() {
+      return {
+      }
+    },
 
     computed: {
-      ...mapState('app', ['authInfo', 'defaultUserImg'])
+      ...mapState('app', ['authInfo', 'defaultUserImg']),
+      fullname() {
+        return `${this.authInfo.first_name} ${this.authInfo.last_name}`
+      }
     },
     methods: {
       ...mapActions('app', ['onLogout'])

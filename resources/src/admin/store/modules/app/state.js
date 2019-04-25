@@ -10,5 +10,8 @@ export default {
     email: null,
   },
   authenticated: false,
+  accessToken: null,
+  tokenType: 'Bearer',
+  refreshToken: null,
   isLoading: false,
 }

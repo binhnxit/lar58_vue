@@ -33,6 +33,7 @@
         "autoprefixer": "^9.5.1",
         "blockui": "^1.0.0",
         "cssnano": "^4.1.10",
+        "dotenv": "^7.0.0",
         "lodash": "^4.17.11",
         "nprogress": "^0.2.0",
         "postcss-unprefix": "^2.1.4",

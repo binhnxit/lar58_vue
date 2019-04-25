@@ -11,6 +11,8 @@ import './plugins'
 import i18n from './lang/i18n'
 import App from './App'
 
+require('dotenv').config()
+
 window.Popper = require('popper.js').default
 
 
