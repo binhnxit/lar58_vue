@@ -6,19 +6,14 @@
  * Time: 5:04 PM
  */
 
-Route::post('/login', 'AuthController@login')->name('login');
-Route::middleware('auth.admin')->group(function () {
-
-    Route::prefix('api')->group(function () {
-        Route::get('me', 'AuthController@me')->name('api.admin.me');
+Route::post('/login', 'AuthController@issueToken')->name('login');
+Route::middleware('auth:api')->group(function () {
         Route::get('logout', 'AuthController@logout')->name('api.admin.logout');
 
-        Route::prefix('users')->name('api.admin.users.')->group(function () {
+        Route::prefix('users')->name('.user.')->group(function () {
             Route::get('/', 'UserController@listAll')->name('list');
             Route::post('/', 'UserController@create')->name('add');
+            Route::get('/me', 'AuthController@me')->name('me');
             Route::get('check-email', 'UserController@checkEmail')->name('check-mail');
         });
-    });
-
 });
-
