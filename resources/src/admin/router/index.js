@@ -10,6 +10,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Meta from 'vue-meta'
+import store from '../store'
 
 // Routes
 import paths from './paths'
@@ -38,6 +39,9 @@ const router = new VueRouter({
 
 router.beforeResolve((to, from, next) => {
   // If this isn't an initial page load.
+  if (to.matched.some(record => record.meta.requiredLogin) && store.state.app.authenticated === false) {
+    next('/login')
+  }
   if (to.name) {
     // Start the route progress bar.
     NProgress.start()

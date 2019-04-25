@@ -1,23 +1,26 @@
 <template>
     <div>
         <!-- Main navbar -->
-        <core-navbar/>
+        <core-navbar v-if="authenticated"/>
         <!-- /main navbar -->
 
         <!-- Page content -->
         <div class="page-content">
 
             <!-- Main sidebar -->
-            <core-sidebar/>
+            <core-sidebar v-if="authenticated"/>
             <!-- /main sidebar -->
 
             <!-- Main content -->
             <div class="content-wrapper">
 
-                <core-view/>
+
+                <core-view v-if="authenticated"/>
+
+                <core-login v-else="authenticated"/>
 
                 <!-- Footer -->
-                <core-footer/>
+                <core-footer v-if="authenticated"/>
                 <!-- /footer -->
 
             </div>
@@ -33,7 +36,7 @@
 
   export default {
     computed: {
-      ...mapState('app', {isLoading: 'isLoading'})
+      ...mapState('app', {isLoading: 'isLoading', authenticated: 'authenticated'})
     },
   }
 </script>

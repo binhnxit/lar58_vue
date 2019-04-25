@@ -5,6 +5,14 @@
  */
 export default [
   {
+    path: '/login',
+    name: 'Login',
+    view: 'Login',
+    meta: {
+      requiredLogin: false
+    }
+  },
+  {
     path: '/dashboard',
     // Relative to /admin/views
     name: 'Dashboard',
@@ -12,7 +20,8 @@ export default [
     meta: {
       breadcrumb: [
         {name: 'Dashboard', link: '/dashboard'}
-      ]
+      ],
+      requiredLogin: true
     }
   },
   {
@@ -22,7 +31,8 @@ export default [
     meta: {
       breadcrumb: [
         {name: 'Users', link: '/users'}
-      ]
+      ],
+      requiredLogin: true
     }
   },
   {
@@ -33,7 +43,8 @@ export default [
       breadcrumb: [
         {name: 'Users', link: '/users'},
         {name: 'Create User', link: '/users/create'}
-      ]
+      ],
+      requiredLogin: true
     }
   }
 ]

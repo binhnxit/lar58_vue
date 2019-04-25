@@ -9,5 +9,6 @@ export default {
     name: null,
     email: null,
   },
+  authenticated: false,
   isLoading: false,
 }
