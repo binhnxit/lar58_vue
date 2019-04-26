@@ -47,7 +47,8 @@ export default {
     commit('SET_LOADING', status)
   },
 
-  setAuth({commit}, status) {
-    commit('SET_AUTHENTICATED', status)
+  setAuthInfo({commit}, data) {
+    commit('SET_AUTHENTICATED', data.status)
+    commit('SET_AUTH_USER', data.user)
   }
 }

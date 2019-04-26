@@ -155,7 +155,7 @@
 
                 <li class="nav-item dropdown dropdown-user">
                     <a href="#" class="navbar-nav-link dropdown-toggle" data-toggle="dropdown">
-                        <img :src="defaultUserImg" class="rounded-circle" alt="">
+                        <img :src="avatar_url" class="rounded-circle" alt="">
                         <span>{{fullname}}</span>
                     </a>
 
@@ -186,8 +186,13 @@
 
     computed: {
       ...mapState('app', ['authInfo', 'defaultUserImg']),
+
       fullname() {
         return `${this.authInfo.first_name} ${this.authInfo.last_name}`
+      },
+
+      avatar_url() {
+        return this.authInfo.avatar ? this.authInfo.avatar_url : this.defaultUserImg
       }
     },
     methods: {
@@ -195,7 +200,7 @@
     },
 
     created() {
-      this.$store.dispatch('app/getAuthInfo')
+      //this.$store.dispatch('app/getAuthInfo')
     }
   }
 </script>

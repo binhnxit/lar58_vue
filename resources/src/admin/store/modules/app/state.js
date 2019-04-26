@@ -6,7 +6,8 @@ export default {
   image: '/images/sidebar1.jpg',
   defaultUserImg: defaultImg,
   authInfo: {
-    name: null,
+    first_name: null,
+    last_name: null,
     email: null,
   },
   authenticated: false,

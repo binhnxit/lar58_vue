@@ -43,7 +43,7 @@ router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiredLogin)) {
     authService.getMe()
       .then(res => {
-        store.dispatch('app/setAuth', true)
+        store.dispatch('app/setAuthInfo', {status: true, user: res.data.data})
         next()
       }).catch(err => {
         next('/login')

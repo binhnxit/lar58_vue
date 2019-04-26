@@ -1,14 +1,18 @@
 {
   "title_create": "Create new user",
   "label": {
-    "name": "Name",
+    "first_name": "First Name",
+    "last_name": "Last Name",
     "email": "Email",
+    "avatar": "Avatar",
     "password": "Password",
     "password_confirmation": "Password Confirmation"
   },
   "hint": {
-    "name": "Input your name",
+    "first_name": "Input your first name",
+    "last_name": "Input your last name",
     "email": "Input your email",
+    "avatar": "Choose avatar",
     "password": "Input your password",
     "password_confirmation": "Input your password confirmation"
   }

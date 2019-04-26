@@ -24,6 +24,7 @@
                     <thead>
                     <tr>
                         <th>#</th>
+                        <th>Avatar</th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Created At</th>
@@ -33,7 +34,10 @@
                     <tbody>
                     <tr v-for="user in items">
                         <td>{{user.id}}</td>
-                        <td>{{user.name}}</td>
+                        <td>
+                            <img :src="user.avatar_url" alt="" class="rounded-circle" width="80" height="80">
+                        </td>
+                        <td>{{user.last_name}} {{user.first_name}}</td>
                         <td>{{user.email}}</td>
                         <td>{{user.created_at}}</td>
                         <td>Action</td>

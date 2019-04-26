@@ -1,6 +1,5 @@
 import {TOKEN_KEY, TOKEN_TYPE} from 'admin/utils/constants'
 export default {
-
   SET_AUTH_INFO(state, data) {
     state.authInfo = data.user
     state.accessToken = data.access_token

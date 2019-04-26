@@ -9,16 +9,27 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    /**
+     * @var $userService UserService
+     */
+    protected $userService;
+
     public function __construct()
     {
         parent::__construct();
+        $this->userService = app(UserService::class);
     }
 
+    /**
+     * @param CreateUserRequest $request
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
+     */
     public function create(CreateUserRequest $request)
     {
-        $params      = $request->only('name', 'email', 'password');
-        $userService = new UserService();
-        $data        = $userService->create($params);
+        $params      = $request->only('first_name', 'last_name', 'email', 'password');
+        $avatar      = $request->file('avatar');
+        $data        = $this->userService->create($params, $avatar);
 
         return !empty($data) ? $this->success($data) : $this->error('ERROR');
     }
@@ -32,7 +43,7 @@ class UserController extends Controller
 
     public function checkEmail(Request $request)
     {
-        $email       = $request->get('email');
+        $email = $request->get('email');
         \Log::info($email);
         $userService = new UserService();
         $data        = $userService->checkEmail($email);

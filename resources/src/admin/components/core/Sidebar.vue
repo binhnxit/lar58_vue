@@ -23,12 +23,12 @@
                 <div class="card-body">
                     <div class="media">
                         <div class="mr-3">
-                            <a href="#"><img src="../../img/themes/placeholders/placeholder.jpg" width="38" height="38"
+                            <a href="#"><img :src="avatar_url" width="38" height="38"
                                              class="rounded-circle" alt=""></a>
                         </div>
 
                         <div class="media-body">
-                            <div class="media-title font-weight-semibold">{{authInfo.name}}</div>
+                            <div class="media-title font-weight-semibold">{{fullname}}</div>
                             <!--<div class="font-size-xs opacity-50">-->
                                 <!--<i class="icon-pin font-size-sm"></i> &nbsp;Santa Ana, CA-->
                             <!--</div>-->
@@ -98,8 +98,15 @@
     },
 
     computed: {
-      ...mapState('app', ['authInfo'])
-    },
+      ...mapState('app', ['authInfo', 'defaultUserImg']),
+      fullname() {
+        return `${this.authInfo.first_name} ${this.authInfo.last_name}`
+      },
+
+      avatar_url() {
+        return this.authInfo.avatar ? this.authInfo.avatar_url : this.defaultUserImg
+      }
+    }
   }
 </script>
 

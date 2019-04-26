@@ -9,18 +9,49 @@
 namespace App\Services;
 
 use App\Entities\User;
+use App\Helpers\FileHelper;
+use App\Repositories\UserRepository;
+use DB;
+use Exception;
+use Log;
 
 class UserService
 {
+    /**
+     * @var $userRepo UserRepository
+     */
+    protected $userRepo;
+
     public function __construct()
     {
+        $this->userRepo = app(UserRepository::class);
     }
 
-    public function create($params)
+    /**
+     * @param $params
+     * @param $file
+     * @return mixed
+     * @throws Exception
+     */
+    public function create($params, $file)
     {
-        $params['password'] = bcrypt($params['password']);
+        try {
+            DB::beginTransaction();
+            $params['password'] = bcrypt($params['password']);
+            $fileHelper = new FileHelper();
+            $params['avatar'] = $fileHelper->upload($file, 'avatar');
 
-        return User::query()->create($params);
+            $user = $this->userRepo->create($params);
+
+            DB::commit();
+            return $user;
+        } catch (Exception $e) {
+            Log::error($e);
+            DB::rollBack();
+
+            return false;
+        }
+
     }
 
     public function listAll()

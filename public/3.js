@@ -61,6 +61,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -177,6 +181,8 @@ var render = function() {
                 _c("tr", [
                   _c("th", [_vm._v("#")]),
                   _vm._v(" "),
+                  _c("th", [_vm._v("Avatar")]),
+                  _vm._v(" "),
                   _c("th", [_vm._v("Name")]),
                   _vm._v(" "),
                   _c("th", [_vm._v("Email")]),
@@ -193,7 +199,23 @@ var render = function() {
                   return _c("tr", [
                     _c("td", [_vm._v(_vm._s(user.id))]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(user.name))]),
+                    _c("td", [
+                      _c("img", {
+                        staticClass: "rounded-circle",
+                        attrs: {
+                          src: user.avatar_url,
+                          alt: "",
+                          width: "80",
+                          height: "80"
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(
+                        _vm._s(user.last_name) + " " + _vm._s(user.first_name)
+                      )
+                    ]),
                     _vm._v(" "),
                     _c("td", [_vm._v(_vm._s(user.email))]),
                     _vm._v(" "),

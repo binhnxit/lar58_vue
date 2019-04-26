@@ -7,13 +7,23 @@
             <div class="col-md-12">
                 <form @submit="onSubmit">
                     <div class="form-group">
-                        <label>{{$t('user.label.name')}}</label>
-                        <input type="text" name="name" class="form-control"
+                        <label>{{$t('user.label.first_name')}}</label>
+                        <input type="text" name="first_name" class="form-control"
                                v-validate="'required'"
-                               :error-messages="errors.collect('name')"
-                               v-model="form.name"
-                               :placeholder="$t('user.hint.name')">
-                        <span v-show="errors.has('name')" class="text-danger">{{errors.first('name')}}</span>
+                               :error-messages="errors.collect('first_name')"
+                               v-model="form.first_name"
+                               :placeholder="$t('user.hint.first_name')">
+                        <span v-show="errors.has('first_name')" class="text-danger">{{errors.first('first_name')}}</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>{{$t('user.label.last_name')}}</label>
+                        <input type="text" name="last_name" class="form-control"
+                               v-validate="'required'"
+                               :error-messages="errors.collect('last_name')"
+                               v-model="form.last_name"
+                               :placeholder="$t('user.hint.last_name')">
+                        <span v-show="errors.has('last_name')" class="text-danger">{{errors.first('last_name')}}</span>
                     </div>
 
                     <div class="form-group">
@@ -44,6 +54,16 @@
                         <span v-show="errors.has('password_confirmation')" class="text-danger">{{errors.first('password_confirmation')}}</span>
                     </div>
 
+                    <div class="form-group">
+                        <label>{{$t('user.label.avatar')}}</label>
+                        <input type="file" name="avatar" class="form-control"
+                               v-validate="'required'"
+                               ref="file"
+                               v-on:change="handleFileUpload()"
+                               :placeholder="$t('user.hint.avatar')">
+                        <span v-show="errors.has('avatar')" class="text-danger">{{errors.first('avatar')}}</span>
+                    </div>
+
                     <div class="justify-content-between align-items-center">
                         <span v-show="isLoading"><i class="icon-spinner2 spinner mr-2"></i> Processing...</span>
                         <button type="submit" class="btn bg-blue float-right">{{$t('btn.submit')}} <i
@@ -67,10 +87,12 @@
     data() {
       return {
         form: {
-          name: null,
+          first_name: null,
+          last_name: null,
           email: null,
           password: null,
           password_confirmation: null,
+          avatar: '',
         }
       }
     },
@@ -86,6 +108,10 @@
             this.$store.dispatch('user/createUser', this.form)
           }
         })
+      },
+
+      handleFileUpload() {
+        this.form.avatar = this.$refs.file.files[0];
       }
     }
   }
