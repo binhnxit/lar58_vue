@@ -1,6 +1,7 @@
 import client from 'admin/plugins/axios'
 import router from 'admin/router'
 import {error, success} from 'admin/plugins/alert'
+import authService from 'admin/services/auth'
 
 export default {
   onLogout() {
@@ -13,16 +14,7 @@ export default {
   },
 
   onLogin({commit}, params) {
-    let data = {
-      grant_type: "password",
-      client_id: process.env.MIX_CLIENT_ID,
-      client_secret: process.env.MIX_CLIENT_SECRET,
-      scope: "",
-      username: params.email,
-      password: params.password
-    }
-
-    client.post('login', data)
+    authService.login(params)
       .then(res => {
         if (!res.data.status) {
           error(res.data.error.message)
@@ -40,16 +32,22 @@ export default {
   },
 
   getAuthInfo({commit}) {
-    client.get('users/me')
+    authService.getMe()
       .then(res => {
-        console.log(res)
         if (res.data.status) {
-          //commit('SET_AUTH_INFO', res.data.data)
+          commit('SET_AUTHENTICATED', true)
+          commit('SET_AUTH_USER', res.data.data)
         }
-      })
+      }).catch(err => {
+      commit('SET_AUTHENTICATED', false)
+    })
   },
 
   setLoading({commit}, status) {
     commit('SET_LOADING', status)
+  },
+
+  setAuth({commit}, status) {
+    commit('SET_AUTHENTICATED', status)
   }
 }

@@ -3,21 +3,20 @@ import Vue from 'vue'
 // Lib imports
 import axios from 'axios'
 
-import {getToken} from 'admin/utils/auth'
-
-let authentication = getToken()
+import auth from 'admin/services/auth'
 
 let client = axios.create({
   baseURL: `${window.origin}/api/admin/v1/`,
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': authentication
-  }
 })
 
 // before a request is made start the nprogress
 client.interceptors.request.use(config => {
   NProgress.start()
+  let authentication = auth.getToken()
+  config.headers = {
+    'Content-Type': 'application/json',
+    'Authorization': authentication
+  }
   return config
 })
 
