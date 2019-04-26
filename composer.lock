@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "55fafff3eb97cbbd17a4dad78c5106d1",
+    "content-hash": "f46a09e8ae2070a99f1daa0d4e6b26e8",
     "packages": [
         {
             "name": "defuse/php-encryption",
@@ -893,49 +893,6 @@
                 "url"
             ],
             "time": "2018-12-04T20:46:45+00:00"
-        },
-        {
-            "name": "herode/arepository",
-            "version": "dev-master",
-            "dist": {
-                "type": "path",
-                "url": "./modules/arepository",
-                "reference": "59e00415f225eeb158ec31d0df7ebb286b9f97eb",
-                "shasum": null
-            },
-            "require": {
-                "ext-json": "*",
-                "php": ">=7.1.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                },
-                "laravel": {
-                    "providers": [
-                        "Herode\\ARepo\\ARepoServiceProvider"
-                    ],
-                    "aliases": {
-                        "ARepo": "Herode\\ARepo\\ARepo"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Herode\\ARepo\\": "src/"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "BinhNguyen",
-                    "email": "binhnx.it@gmail.com"
-                }
-            ],
-            "description": "'A' Repository"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -5585,16 +5542,16 @@
         },
         {
             "name": "sebastian/environment",
-            "version": "4.1.0",
+            "version": "4.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/environment.git",
-                "reference": "6fda8ce1974b62b14935adc02a9ed38252eca656"
+                "reference": "3095910f0f0fb155ac4021fc51a4a7a39ac04e8a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/6fda8ce1974b62b14935adc02a9ed38252eca656",
-                "reference": "6fda8ce1974b62b14935adc02a9ed38252eca656",
+                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/3095910f0f0fb155ac4021fc51a4a7a39ac04e8a",
+                "reference": "3095910f0f0fb155ac4021fc51a4a7a39ac04e8a",
                 "shasum": ""
             },
             "require": {
@@ -5609,7 +5566,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.1-dev"
+                    "dev-master": "4.2-dev"
                 }
             },
             "autoload": {
@@ -5634,7 +5591,7 @@
                 "environment",
                 "hhvm"
             ],
-            "time": "2019-02-01T05:27:49+00:00"
+            "time": "2019-04-25T07:55:20+00:00"
         },
         {
             "name": "sebastian/exporter",
@@ -6272,13 +6229,12 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "herode/arepository": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.1.3"
+        "php": "^7.1.3",
+        "ext-json": "*"
     },
     "platform-dev": []
 }
