@@ -56,11 +56,16 @@
 
                     <div class="form-group">
                         <label>{{$t('user.label.avatar')}}</label>
-                        <input type="file" name="avatar" class="form-control"
-                               v-validate="'required'"
-                               ref="file"
-                               v-on:change="handleFileUpload()"
-                               :placeholder="$t('user.hint.avatar')">
+                        <div class="custom-file">
+                            <input type="file" name="avatar"
+                                   id="customFile"
+                                   class="custom-file-input"
+                                   v-validate="'required'"
+                                   ref="file"
+                                   v-on:change="handleFileUpload()"
+                                   :placeholder="$t('user.hint.avatar')">
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                        </div>
                         <span v-show="errors.has('avatar')" class="text-danger">{{errors.first('avatar')}}</span>
                     </div>
 

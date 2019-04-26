@@ -4,10 +4,11 @@ import {error, success} from 'admin/plugins/alert'
 import authService from 'admin/services/auth'
 
 export default {
-  onLogout() {
+  onLogout({commit}) {
     client.get('logout')
       .then(res => {
         if (res.data.status) {
+          commit('SET_LOGOUT')
           router.push('/login')
         }
       })

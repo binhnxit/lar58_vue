@@ -38,6 +38,7 @@ var App = function () {
   // On desktop
   //
 
+
   // Resize main sidebar
   var _sidebarMainResize = function() {
 
@@ -68,7 +69,7 @@ var App = function () {
     }
 
     // Toggle min sidebar class
-    $('.sidebar-main-toggle').on('click', function (e) {
+    $('body').on('click', '.sidebar-main-toggle', function (e) {
       e.preventDefault();
 
       $('body').toggleClass('sidebar-xs').removeClass('sidebar-mobile-main');
@@ -193,7 +194,7 @@ var App = function () {
 
   // Toggle main sidebar on mobile
   var _sidebarMobileMainToggle = function() {
-    $('.sidebar-mobile-main-toggle').on('click', function(e) {
+    $('body').on('click', '.sidebar-mobile-main-toggle', function(e) {
       e.preventDefault();
       $('body').toggleClass('sidebar-mobile-main').removeClass('sidebar-mobile-secondary sidebar-mobile-right');
 

@@ -166,7 +166,7 @@
                                 class="badge badge-pill bg-blue ml-auto">58</span></a>
                         <div class="dropdown-divider"></div>
                         <a href="#" class="dropdown-item"><i class="icon-cog5"></i> Account settings</a>
-                        <a href="#" class="dropdown-item"><i class="icon-switch2"></i> Logout</a>
+                        <a @click="onLogout" class="dropdown-item"><i class="icon-switch2"></i> Logout</a>
                     </div>
                 </li>
             </ul>

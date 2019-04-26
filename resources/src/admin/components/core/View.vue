@@ -72,7 +72,7 @@
 
         <!-- Content area -->
         <div class="content">
-            <transition name="page" mode="out-in">
+            <transition name="fade" mode="out-in">
                 <router-view/>
             </transition>
         </div>
@@ -108,4 +108,15 @@
     #core-view {
         padding-bottom: 100px;
     }
+
+    .fade-enter-active,
+    .fade-leave-active {
+        transition: opacity 0.5s;
+    }
+
+    .fade-enter,
+    .fade-leave-to {
+        opacity: 0;
+    }
+
 </style>

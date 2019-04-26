@@ -19,5 +19,11 @@ export default {
 
   SET_AUTHENTICATED(state, status) {
     state.authenticated = status
+  },
+
+  SET_LOGOUT(state) {
+    state.authenticated = false
+    localStorage.removeItem(TOKEN_TYPE)
+    localStorage.removeItem(TOKEN_KEY)
   }
 }
