@@ -1,0 +1,35 @@
+{
+  "name": "herode/role",
+  "description": "Herode Roles and permissions",
+  "type": "library",
+  "require": {
+    "php": ">=7.1.0",
+    "ext-json": "*"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "BinhNguyen",
+      "email": "binhnx.it@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Herode\\Role\\": "src/"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    },
+    "laravel": {
+      "providers": [
+        "Herode\\Role\\RoleServiceProvider"
+      ],
+      "aliases": {
+        "Role": "Herode\\Role\\Role"
+      }
+    }
+  },
+  "minimum-stability": "dev"
+}

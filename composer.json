@@ -15,7 +15,9 @@
     "laravel/framework": "5.8.*",
     "laravel/passport": "^7.2",
     "laravel/tinker": "^1.0",
-    "ext-json": "*"
+    "ext-json": "*",
+    "herode/role": "*@dev",
+    "herode/arepository": "*@dev"
   },
   "require-dev": {
     "beyondcode/laravel-dump-server": "^1.0",
@@ -36,17 +38,14 @@
     "laravel": {
       "dont-discover": [],
       "providers": [
-        "Herode\\ARepo\\ARepoServiceProvider"
       ],
       "aliases": {
-        "ARepo": "Herode\\ARepo\\ARepo"
       }
     }
   },
   "autoload": {
     "psr-4": {
-      "App\\": "app/",
-      "Herode\\ARepo\\": "modules/arepository/src/"
+      "App\\": "app/"
     },
     "classmap": [
       "database/seeds",
@@ -79,5 +78,15 @@
     "lint": [
       "phpcs --standard=ruleset.xml"
     ]
-  }
+  },
+  "repositories": [
+    {
+      "type": "path",
+      "url": "./modules/arepository"
+    },
+    {
+      "type": "path",
+      "url": "./modules/heroderole"
+    }
+  ]
 }

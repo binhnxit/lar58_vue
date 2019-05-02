@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/test', 'Admin\DashboardController@test');
+
 // Catch-all Route...
 Route::prefix('admin')->namespace('Admin')->group(function () {
     require_once __DIR__ . '/admin.php';
