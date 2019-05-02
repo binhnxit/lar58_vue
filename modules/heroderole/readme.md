@@ -1,7 +1,9 @@
 # Herode Roles and Permissions (Laravel) 
 
 ## Install
-If you want to use other project, You can:
+Have two options to install, you can choose one of them
+
+### 1. If you want to use and modify this package, You can:
 
 - Copy this folder `heroderole` to `modules/heroderole` into your root project
 
@@ -23,6 +25,9 @@ If you want to use other project, You can:
     //...
 }
 ```
+
+### 2. Or you can install via composer
+`composer require herode/role`
 
 Next, run: `composer update`
 
@@ -103,7 +108,7 @@ protected $routeMiddleware = [
     
 ```
 
-Them you can protect your routes using middleware rules: <br>
+Then you can protect your routes using middleware rules: <br>
 
 ```php
 Route::middleware(['role:admin'])->group(function () {
@@ -117,7 +122,9 @@ Route::middleware(['role:admin|company'])->group(function () {
 });
 ```
 
-Catching role failures <br>
+## Catching role failures <br>
+
+If you want to override the default 403 response, You can catch the `UnauthorizedException` using your app's exception handler:
 
 ```php
 public function render($request, Exception $exception)
