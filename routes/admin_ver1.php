@@ -7,7 +7,7 @@
  */
 
 Route::post('/login', 'AuthController@issueToken')->name('login');
-Route::middleware('auth:api')->group(function () {
+Route::middleware(['auth:api', 'role:admin'])->group(function () {
         Route::get('logout', 'AuthController@logout')->name('api.admin.logout');
 
         Route::prefix('users')->name('.user.')->group(function () {

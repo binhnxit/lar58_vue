@@ -19,8 +19,15 @@ class DashboardController extends Controller
 
     public function test()
     {
-        $user = User::find(3);
+        $user = User::create(
+            [
+                'first_name' => 'binh',
+                'last_name'  => 'nguyen',
+                'email'      => str_random(5) . '@lar58vue.com',
+                'password'   => bcrypt('password')
+            ]
+        );
 
-        dd($user->hasRole('admin'));
+        dd($user->toArray());
     }
 }

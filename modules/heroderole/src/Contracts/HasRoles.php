@@ -104,6 +104,11 @@ trait HasRoles
         return $roles->intersect($this->roles)->isNotEmpty();
     }
 
+    public function hasAnyRole($roles): bool
+    {
+        return $this->hasRole($roles);
+    }
+
     /**
      * @param $role
      * @return Role

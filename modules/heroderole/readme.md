@@ -89,6 +89,44 @@ Remove role from user: <br>
 $user->removeRole('admin')
 ```
 
+You can published role default seeder via seed command: <br>
+`php artisan db:seed --class=RoleDefaultSeeder`
+
 ## Using a middleware
 
+This package comes with `RoleMiddleware` middleware. You can add them inside your `app/Http/Kernel.php` file: <br>
+```php
+protected $routeMiddleware = [
+        //...
+        'role' => \Herode\Role\Middlewares\RoleMiddleware::class,
+    ];
+    
+```
 
+Them you can protect your routes using middleware rules: <br>
+
+```php
+Route::middleware(['role:admin'])->group(function () {
+    //...
+});
+```
+
+```php
+Route::middleware(['role:admin|company'])->group(function () {
+    //...
+});
+```
+
+Catching role failures <br>
+
+```php
+public function render($request, Exception $exception)
+{
+    if ($exception instanceof Herode\Role\Exceptions\UnauthorizedException) {
+        // Code here ...
+    }
+    
+    return parent::render($request, $exception);
+}
+
+```

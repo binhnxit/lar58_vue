@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use App\Contracts\ResponseTrait;
 use Exception;
+use Herode\Role\Exceptions\UnauthorizedException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Validation\ValidationException;
 
@@ -52,6 +53,10 @@ class Handler extends ExceptionHandler
         if ($request->wantsJson()) {
             if ($exception instanceof ValidationException) {
                 return $this->error($exception->validator->errors()->first());
+            }
+
+            if ($exception instanceof UnauthorizedException) {
+                return $this->error($exception->getMessage(), $exception->getStatusCode());
             }
         }
         return parent::render($request, $exception);
