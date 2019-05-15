@@ -45,9 +45,11 @@ router.beforeEach((to, from, next) => {
       .then(res => {
         store.dispatch('app/setAuthInfo', {status: true, user: res.data.data})
         next()
-      }).catch(err => {
+      })
+      .catch(err => {
+        store.dispatch('app/setAuthInfo', {status: false, user: null})
         next('/login')
-    })
+      })
   }
 
   next()
