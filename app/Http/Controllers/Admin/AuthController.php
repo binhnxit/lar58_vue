@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Entities\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\LoginRequest;
 use App\Repositories\UserRepository;
@@ -79,12 +80,15 @@ class AuthController extends Controller
      */
     public function issueToken(ServerRequestInterface $request)
     {
-        //@TODO check role at here
 
         return $this->withErrorHandling(function () use ($request) {
             $respond = $this->server->respondToAccessTokenRequest($request, new Psr7Response);
 
-            $user        = $this->userRepo->findWhere(['email' => $request->getParsedBody()['username']])->first();
+            /** @var $user User */
+            $user = $this->userRepo->findWhere(['email' => $request->getParsedBody()['username']])->first();
+            if (!$user->hasRole('admin')) {
+                return $this->error('YOU_HAVE_NOT_PERMISSION', 403);
+            }
             $tokenObject = json_decode((string)$respond->getBody());
 
             $tokenObject->user = $user;

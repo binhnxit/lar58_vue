@@ -40,7 +40,7 @@ trait ResponseTrait
                     'message' => $message,
                 ],
             ],
-            200
+            $status
         );
     }
 

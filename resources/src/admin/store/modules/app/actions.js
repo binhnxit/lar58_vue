@@ -29,6 +29,10 @@ export default {
         if (err.response.status === 401) {
           error('The user credentials were incorrect.')
         }
+
+      if (err.response.status === 403) {
+        error('You do not have permission')
+      }
     })
   },
 
