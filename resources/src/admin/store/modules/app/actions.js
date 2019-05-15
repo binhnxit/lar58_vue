@@ -25,15 +25,17 @@ export default {
           commit('SET_AUTH_INFO', res.data.data)
           router.push('/')
         }
-      }).catch(err => {
-        if (err.response.status === 401) {
+      })
+      .catch(err => {
+        let statusCode = err.response.status
+        if (statusCode === 401) {
           error('The user credentials were incorrect.')
+        } else if (statusCode === 403) {
+          error('You do not have permission')
+        } else {
+          error('HTTP INTERNAL ERROR')
         }
-
-      if (err.response.status === 403) {
-        error('You do not have permission')
-      }
-    })
+      })
   },
 
   getAuthInfo({commit}) {
